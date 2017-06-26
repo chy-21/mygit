@@ -1,0 +1,443 @@
+/*!
+ * Start Bootstrap - SB Admin (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/* Global Styles */
+
+body {
+    margin-top: 100px;
+    background-color: #F5F5F5;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+html,body{
+    font-family: "Helvetica", "Microsoft Yahei", "宋体";
+}
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #F5F5F5;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 180px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    line-height: 20px;
+    color: #fff;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #8BB4D4;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 71px;
+        left: 225px;
+        width: 180px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #eeeeee;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: rgb(139, 180, 212) !important;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.side-nav>li>ul>li>a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    color: #999;
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
+}
+
+/* Flot Chart Containers */
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+}
+
+/*.navbar-inverse .navbar-nav>li>a {*/
+	/*font-family: "Microsoft YaHei";*/
+    /*color: #888988;*/
+/*}*/
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #00C1DE;
+    background-color: #080808;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #FFF;
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 25px 15px;
+    font-size: 22px;
+    line-height: 20px;
+}
+
+.page-header {
+    padding-bottom: 9px;
+    font-size:24px;
+    margin: 20px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.control-label .required, .form-group .required {
+    color: #e02222;
+    padding-left: 2px;
+}
+table.dataTable tbody tr.selected {
+    background-color: #B0BED9;
+}
+.nav .active,nav .active{
+    background: #1a5ba9;
+}
+.navbar-inverse .navbar-nav>li>a.active{
+    color: #fff;
+}
+.nav .active a,nav .active a{
+    color: #fff;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #41725B;
+    border-color: rgba(65, 114, 91, 0.9);
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: rgba(65, 114, 91, 0.8);
+    border-color: #41725B;
+}
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+    color: #fff;
+    background-color: rgba(65, 114, 91, 0.81);
+    border-color: #41725B;
+}
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: rgba(65, 114, 91, 0.8);
+    border-color: #41725B;
+}
+.btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #41725B;
+    border-color: rgba(65, 114, 91, 0.8);
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: none;
+    outline-offset: -2px;
+}
+.label-primary {
+    background-color: #41725b;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: rgba(65, 114, 91, 0.9);
+    border-color: #41725b;
+}
+a:focus {
+    outline: none;
+    outline-offset: -2px;
+}
+.label-warning {
+    background-color: #747474;
+}
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #41725b;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    z-index: 2;
+    color: #41725b;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+/*覆盖默认样式*/
+.navbar-brand {
+    height: 70px;
+}
+
+.navbar-inverse {
+    background-color: #1a5ba9;
+    border-color: #081DA9;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #000;
+}
+
+
+.panel_box{
+    padding: 10px 15px;
+}
+.panel_box .title{
+    font-size: 16px;
+}
+.panel_box .content{
+    font-size: 28px;
+    padding: 15px 0;
+}
+.panel_box .footer a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #888988;
+}
+#workerCount,#workerCount1{
+    background-color: #fff;
+}
+.panel-heading{
+    border-bottom: 1px solid #BEBEBE;
+}
+.panel-title span{
+    font-size: 14px;
+    color: #BEBEBE;
+}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+.panel-body .active{
+    border:2px solid #f10215;
+}
+.panel .certificate{
+    width: 100%;
+    height: 200px;
+}
+.panel .certificate img{
+    width: 100%;
+    height: 100%;
+}
+.certificateList .modal-body{
+    width: 100%;
+    height: 300px;
+}
+#overlay{
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: rgba(0,0,0,0);
+    display: none;
+}
+
+
+/*修改上传文件按钮样式，解决不同浏览器不一致问题*/
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+.panel-title{
+    display: block;
+}
+.panel-title input{
+    float: right;
+}

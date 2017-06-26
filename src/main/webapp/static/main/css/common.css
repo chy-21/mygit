@@ -1,0 +1,363 @@
+@charset "utf-8";
+/*
+  Document   : CSS样式初始化
+  Created on : 2017. 3. 24,09:41:00
+  Author :wangqiang
+  Description:CSS样式表的初始化，全局样式设置。
+  */
+/* reset */
+html {
+  font-size: 10px;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+textarea,
+p,
+blockquote,
+th,
+td,
+input,
+select,
+textarea,
+button {
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+/* 初始化标签在所有浏览器中的margin、padding值 */
+fieldset,
+img {
+  border: 0 none;
+}
+/* 重置fieldset（表单分组）、图片的边框为0*/
+dl,
+ul,
+ol,
+menu,
+li {
+  list-style: none;
+}
+/* 重置类表前导符号为onne,menu在HTML5中有效 */
+blockquote,
+q {
+  quotes: none;
+}
+/* 重置嵌套引用的引号类型 */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+/* 重置嵌套引用*/
+input,
+select,
+textarea,
+button {
+  vertical-align: middle;
+}
+/* 重置表单控件垂直居中*/
+button {
+  border: 0 none;
+  background-color: transparent;
+  cursor: pointer;
+}
+/* 重置表单button按钮效果 */
+body {
+  background: #fff;
+}
+/* 重置body 页面背景为白色 */
+body,
+th,
+td,
+input,
+select,
+textarea,
+button {
+  font-family: "Helvetica", "Microsoft Yahei","宋体";
+}
+/* 重置页面文字属性 */
+a {
+  color: #666;
+  text-decoration: none;
+}
+/* 重置链接a标签 */
+a:active,
+a:hover,
+a:visited,
+a:link {
+  text-decoration: none;
+}
+/* 重置链接a标签的鼠标滑动效果 */
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+/* 重置样式标签的样式 */
+caption {
+  display: none;
+}
+/* 重置表格标题为隐藏 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+/* 重置table属性 */
+img {
+  vertical-align: top;
+}
+/* 图片在当前行内的垂直位置 */
+/* 页面设置 */
+/* 取消a标签点击后的虚线框 */
+a {
+  outline: none;
+}
+a:active {
+  outline: none;
+}
+/* 设置页面文字等在拖动鼠标选中情况下的背景色与文字颜色 */
+/*
+::selection {color: #fff;background-color: #4C6E78;}
+::-moz-selection {color: #fff;background-color: #4C6E78;}
+*/
+.lf {
+  float: left;
+}
+.rf {
+  float: right;
+}
+/*清除浮动*/
+.clear {
+  clear: both;
+}
+/*清除浮动--推荐使用*/
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid\9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+/*页面公共部分样式*/
+/*导航*/
+#nav {
+  min-width: 1190px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #2b2f3a;
+}
+#nav .wrap {
+  width: 1190px;
+  height: 60px;
+  line-height: 60px;
+  color: #fff;
+  margin: 0 auto;
+}
+#nav .wrap .logo {
+  float: left;
+}
+#nav .wrap .logo a {
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+  color: #fff;
+}
+#nav .wrap .logo a img {
+  vertical-align: middle;
+  width: 104px;
+  height: 18px;
+}
+#nav .wrap .menu {
+  float: right;
+}
+#nav .wrap .menu ul .first-menu {
+  float: left;
+  height: 60px;
+  color: #fff;
+  box-sizing: border-box;
+  position: relative;
+}
+#nav .wrap .menu ul .first-menu .pro-menu-second {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  height: 260px;
+  width: 168px;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  background-color: rgba(43, 47, 58, 0.9);
+}
+#nav .wrap .menu ul .first-menu .pro-menu-second li {
+  float: left;
+  font-size: 16px;
+  width: 140px;
+  height: 40px;
+  border-radius: 3px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #3c4144;
+  margin-bottom: 10px;
+}
+#nav .wrap .menu ul .first-menu .pro-menu-second li.active {
+  background-color: #2b2f3a;
+  border: 1px solid #3c4144;
+}
+#nav .wrap .menu ul .first-menu .pro-menu-second li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+}
+#nav .wrap .menu ul .first-menu .pro-menu-second li a:hover {
+  background-color: #2b2f3a;
+  border: 1px solid #3c4144;
+}
+#nav .wrap .menu ul .first-menu .pro-menu-second li.lastm {
+  margin-right: 0;
+}
+#nav .wrap .menu ul .first-menu a {
+  display: block;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+#nav .wrap .menu ul .first-menu.dropdown-user {
+  position: relative;
+}
+#nav .wrap .menu ul .first-menu.dropdown-user .dropdown-content {
+  background-color: rgba(43, 47, 58, 0.9);
+  padding: 10px 14px;
+  box-sizing: border-box;
+  width: 168px;
+  display: none;
+  position: absolute;
+  z-index: 100;
+}
+#nav .wrap .menu ul .first-menu.dropdown-user .dropdown-content.active {
+  display: block;
+}
+#nav .wrap .menu ul .first-menu.dropdown-user .dropdown-content li {
+  font-size: 16px;
+  width: 140px;
+  height: 40px;
+  border-radius: 3px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #3c4144;
+  margin-bottom: 10px;
+}
+#nav .wrap .menu ul .first-menu.dropdown-user .dropdown-content li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+}
+#nav .wrap .menu ul .first-menu.dropdown-user .dropdown-content li a:hover {
+  background-color: #2b2f3a;
+  border: 1px solid #3c4144;
+}
+#nav .wrap .menu ul .first-menu:hover {
+  background-color: #3c4144;
+}
+#nav .wrap .menu ul li.active {
+  border-bottom: 4px solid #1e86c6;
+}
+/*底部*/
+#footer {
+  min-width: 1190px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 80px;
+  background-color: #ccc;
+}
+#footer .warpper {
+  width: 1190px;
+  margin: 0 auto;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 24px;
+  padding-bottom: 14px;
+}
+#footer .warpper ul {
+  width: 100%;
+  margin-bottom: 24px;
+}
+#footer .warpper ul li {
+  float: left;
+  width: 20%;
+  height: 100%;
+}
+#footer .warpper ul li h4 {
+  font-size: 12px;
+  color: #3c3c3c;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+#footer .warpper ul li p {
+  font-size: 12px;
+  line-height: 20px;
+  color: #6c6c6c;
+}
+#footer .warpper .copy-right {
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/*覆盖默认样式*/
+.navbar {
+  position: relative;
+  min-height: 70px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}

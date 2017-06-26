@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myEducation.inside.dao.DictDao">
+
+	<sql id="table">dict</sql>
+	<sql id="columns">id,name,value,type</sql>
+	
+	<select id="selectByType" resultType="Dict">
+		SELECT <include refid="columns"></include> FROM <include refid="table"></include>
+		where type = #{type}
+		ORDER BY id
+	</select>
+</mapper>
