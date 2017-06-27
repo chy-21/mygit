@@ -81,7 +81,7 @@ public class TeacherController {
 	
 	@RequestMapping("autoTeacher")
 	@ResponseBody
-	public List<HashMap<String, Object>> getSchoolAll(){
+	public List<HashMap<String, Object>> getTeacherAll(){
 		return teacherService.getAll();
 	}
 }
