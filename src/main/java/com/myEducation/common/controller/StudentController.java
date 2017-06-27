@@ -1,8 +1,5 @@
 package com.myEducation.common.controller;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myEducation.inside.model.Student;
 import com.myEducation.inside.service.DictService;
-import com.myEducation.inside.service.SchoolService;
 import com.myEducation.inside.service.StudentService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
@@ -25,9 +21,6 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-	
-	@Autowired
-	private SchoolService schoolService;
 	
 	@Autowired
 	private DictService dictService;
@@ -86,12 +79,6 @@ public class StudentController {
 			result.setContent(e.getMessage());
 		}
 		return result;
-	}
-	
-	@RequestMapping("autodata")
-	@ResponseBody
-	public List<HashMap<String,Object>> schoolGetAll(){
-		return schoolService.getAll();
 	}
 	
 	public void initDict(Model model){

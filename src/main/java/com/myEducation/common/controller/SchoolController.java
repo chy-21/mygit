@@ -1,5 +1,8 @@
 package com.myEducation.common.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,5 +74,11 @@ public class SchoolController {
 			result.setContent(e.getMessage());
 		}
 		return result;
+	}
+	
+	@RequestMapping("autoSchool")
+	@ResponseBody
+	public List<HashMap<String, Object>> getSchoolAll(){
+		return schoolService.getAll();
 	}
 }

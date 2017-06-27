@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myEducation.inside.model.Teacher;
-import com.myEducation.inside.service.SchoolService;
 import com.myEducation.inside.service.TeacherService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
@@ -24,9 +23,6 @@ public class TeacherController {
 
 	@Autowired
 	private TeacherService teacherService;
-	
-	@Autowired
-	private SchoolService schoolService;
 	
 	@RequestMapping
 	public String index(){
@@ -56,14 +52,9 @@ public class TeacherController {
 		Result<String> result = new Result<String>();
 		try {
 			if (teacher.getId() == null) {
-				Teacher t_id = this.teacherService.getById(teacher.getId());
-				if (t_id.getSex() == teacher.getSex() || t_id.getAge() == teacher.getAge()) {
-					if (t_id.getSynopsis().equals(teacher.getSynopsis())) {
-						result.setStatus(ResultStatus.USER_EXISTENCE);
-						return result;
-					}
+				if (teacher.getName() == null) {
+					this.teacherService.insert(teacher);
 				}
-				this.teacherService.insert(teacher);
 			}else {
 				Teacher t_id = this.teacherService.getById(teacher.getId());
 				if (t_id == null) {
@@ -88,9 +79,9 @@ public class TeacherController {
 		return result;
 	}
 	
-	@RequestMapping("auto")
+	@RequestMapping("autoTeacher")
 	@ResponseBody
-	public List<HashMap<String, Object>> getAll(){
-		return schoolService.getAll();
+	public List<HashMap<String, Object>> getSchoolAll(){
+		return teacherService.getAll();
 	}
 }

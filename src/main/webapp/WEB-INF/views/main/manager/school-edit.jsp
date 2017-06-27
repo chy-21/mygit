@@ -66,7 +66,7 @@
                     <div class="page-header">
                         <h3>学校基本信息</h3>
                     </div>
-                    <form id="teacherForm" action="${pageContext.request.contextPath}/main/manager/school/edit"
+                    <form id="schoolForm" action="${pageContext.request.contextPath}/main/manager/school/edit"
                           method="post" user="form">
                         <input id="userId" name="id" hidden="hidden" value="${school.id}">
                        	<div class="row form-group">
@@ -137,9 +137,9 @@
 
     var autoData;
     $(document).ready(function () {
-        $('#userForm').ajaxForm({
+        $('#schoolForm').ajaxForm({
             beforeSubmit: function () {
-                return $('#userForm').valid();
+                return $('#schoolForm').valid();
             },
             success: function (data) {
                 if (!data.status) {

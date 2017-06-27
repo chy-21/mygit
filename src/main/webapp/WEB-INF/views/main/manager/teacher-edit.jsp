@@ -108,8 +108,8 @@
                         		<label>所在学校<span class="required"> * </span></label>
                         	</div>
                         	<div class="col-lg-4">
-                        		<input type="hidden" name="s_id" id="s_id" value="${student.s_id }" />
-                        		<input class="form-control" required="true" id="sName" name="sName" value="${student.sName}"/>
+                        		<input type="hidden" name="s_id" id="s_id" value="${teacher.s_id }" />
+                        		<input class="form-control" required="true" id="sName" name="sName" value="${teacher.sName}"/>
                         	</div>
                         </div>
                         <div class="row form-group">
@@ -117,8 +117,8 @@
                         		<label>所在年级<span class="required"> * </span></label>
                         	</div>
                         	<div class="col-lg-4">
-                        		<input type="hidden" name="g_id" id="g_id" value="${student.g_id }" />
-                        		<input class="form-control" required="true" id="gName" name="gName" value="${student.gName}"/>
+                        		<input type="hidden" name="g_id" id="g_id" value="${teacher.g_id }" />
+                        		<input class="form-control" required="true" id="gName" name="gName" value="${teacher.gName}"/>
                         	</div>
                         </div>
                         <div class="row form-group">
@@ -126,8 +126,8 @@
                         		<label>所在班级<span class="required"> * </span></label>
                         	</div>
                         	<div class="col-lg-4">
-                        		<input type="hidden" name="c_id" id="c_id" value="${student.c_id }" />
-                        		<input class="form-control" required="true" id="cName" name="cName" value="${student.cName}"/>
+                        		<input type="hidden" name="c_id" id="c_id" value="${teacher.c_id }" />
+                        		<input class="form-control" required="true" id="cName" name="cName" value="${teacher.cName}"/>
                         	</div>
                         </div>
                         
@@ -167,10 +167,13 @@
 
     var autoData;
     $(document).ready(function () {
-    	initAutocomplate
-        $('#userForm').ajaxForm({
+    	initAutocomplateSchool();
+    	initAutocomplateGrade();
+    	initAutocomplateClass();
+    	
+        $('#teacherForm').ajaxForm({
             beforeSubmit: function () {
-                return $('#userForm').valid();
+                return $('#teacherForm').valid();
             },
             success: function (data) {
                 if (!data.status) {
@@ -194,9 +197,9 @@
         });
     });
     
-    function initAutocomplate(){
+    function initAutocomplateSchool(){
     	$.ajax({
-    		url: "${pageContext.request.contextPath}/main/manager/teacher/auto",
+    		url: "${pageContext.request.contextPath}/main/manager/school/autoSchool",
     		method:'get',
     		dataType:'json',
     		success: function(data){
@@ -224,7 +227,69 @@
         	}
 		})
     }
-
+    
+    function initAutocomplateGrade(){
+    	$.ajax({
+    		url: "${pageContext.request.contextPath}/main/manager/s_grade/autoGrade",
+    		method:'get',
+    		dataType:'json',
+    		success: function(data){
+    			$( "#gName" ).autocomplete({
+    			      source: data,
+    			      delay:10,
+    			      minLength:0,
+    			      autoFocus:false,
+    			      focus: function( event, ui ) {
+    			        $( "#gName" ).val( ui.item.label );
+    			        $( "#g_id" ).val( ui.item.value );
+    			        return false;
+    			      },
+    			      select: function( event, ui ) {
+    			        $( "#gName" ).val( ui.item.label );
+    			        $( "#g_id" ).val( ui.item.value );
+    			        return false;
+    			      }
+    			    })
+    			    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    			      return $( "<li>" )
+    			        .append( "<a>" + item.label + "</a>" )
+    			        .appendTo( ul );
+    			    };
+        	}
+		})
+    }
+    
+    function initAutocomplateClass(){
+    	$.ajax({
+    		url:"${pageContext.request.contextPath}/main/manager/s_class/autoClass",
+    		method:'get',
+    		datatype:'json',
+    		success: function(data){
+    			$( "#cName" ).autocomplete({
+    			      source: data,
+    			      delay:10,
+    			      minLength:0,
+    			      autoFocus:false,
+    			      focus: function( event, ui ) {
+    			        $( "#cName" ).val( ui.item.label );
+    			        $( "#c_id" ).val( ui.item.value );
+    			        return false;
+    			      },
+    			      select: function( event, ui ) {
+    			        $( "#cName" ).val( ui.item.label );
+    			        $( "#c_id" ).val( ui.item.value );
+    			        return false;
+    			      }
+    			    })
+    			    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    			      return $( "<li>" )
+    			        .append( "<a>" + item.label + "</a>" )
+    			        .appendTo( ul );
+    			    };
+        	}
+    	})
+    }
+    
 </script>
 </body>
 

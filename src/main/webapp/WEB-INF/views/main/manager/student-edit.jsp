@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh">
 
@@ -67,7 +67,7 @@
                     <div class="page-header">
                         <h3>学生基本信息</h3>
                     </div>
-                    <form id="teacherForm" action="${pageContext.request.contextPath}/main/manager/student/..."
+                    <form id="studentForm" action="${pageContext.request.contextPath}/main/manager/student/edit"
                           method="post" user="form">
                         <input id="userId" name="id" hidden="hidden" value="${student.id}">
                        	<div class="row form-group">
@@ -179,10 +179,13 @@
 
     var autoData;
     $(document).ready(function () {
-    	initAutocomplate();
-        $('#userForm').ajaxForm({
+    	initAutocomplateSchool();
+    	initAutocomplateGrade();
+    	initAutocomplateClass();
+    	
+        $('#studentForm').ajaxForm({
             beforeSubmit: function () {
-                return $('#userForm').valid();
+                return $('#studentForm').valid();
             },
             success: function (data) {
                 if (!data.status) {
@@ -207,9 +210,9 @@
     });
 
     
-    function initAutocomplate(){
+    function initAutocomplateSchool(){
     	$.ajax({
-    		url: "${pageContext.request.contextPath}/main/manager/student/....",
+    		url: "${pageContext.request.contextPath}/main/manager/school/autoSchool",
     		method:'get',
     		dataType:'json',
     		success: function(data){
@@ -235,7 +238,69 @@
     			        .appendTo( ul );
     			    };
         	}
-		});
+		})
+    }
+    
+    function initAutocomplateGrade(){
+    	$.ajax({
+    		url: "${pageContext.request.contextPath}/main/manager/s_grade/autoGrade",
+    		method:'get',
+    		dataType:'json',
+    		success: function(data){
+    			$( "#gName" ).autocomplete({
+    			      source: data,
+    			      delay:10,
+    			      minLength:0,
+    			      autoFocus:false,
+    			      focus: function( event, ui ) {
+    			        $( "#gName" ).val( ui.item.label );
+    			        $( "#g_id" ).val( ui.item.value );
+    			        return false;
+    			      },
+    			      select: function( event, ui ) {
+    			        $( "#gName" ).val( ui.item.label );
+    			        $( "#g_id" ).val( ui.item.value );
+    			        return false;
+    			      }
+    			    })
+    			    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    			      return $( "<li>" )
+    			        .append( "<a>" + item.label + "</a>" )
+    			        .appendTo( ul );
+    			    };
+        	}
+		})
+    }
+    
+    function initAutocomplateClass(){
+    	$.ajax({
+    		url:"${pageContext.request.contextPath}/main/manager/s_class/autoClass",
+    		method:'get',
+    		datatype:'json',
+    		success: function(data){
+    			$( "#cName" ).autocomplete({
+    			      source: data,
+    			      delay:10,
+    			      minLength:0,
+    			      autoFocus:false,
+    			      focus: function( event, ui ) {
+    			        $( "#cName" ).val( ui.item.label );
+    			        $( "#c_id" ).val( ui.item.value );
+    			        return false;
+    			      },
+    			      select: function( event, ui ) {
+    			        $( "#cName" ).val( ui.item.label );
+    			        $( "#c_id" ).val( ui.item.value );
+    			        return false;
+    			      }
+    			    })
+    			    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+    			      return $( "<li>" )
+    			        .append( "<a>" + item.label + "</a>" )
+    			        .appendTo( ul );
+    			    };
+        	}
+    	})
     }
 </script>
 </body>

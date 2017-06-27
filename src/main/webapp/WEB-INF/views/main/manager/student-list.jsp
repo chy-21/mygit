@@ -79,6 +79,7 @@
 				            <th>班级</th>
 				            <th>入校时间</th>
 				            <th>修改时间</th>
+				            <th>查看成绩</th>
 				        </tr>
 				        </thead>
 				    </table>
@@ -132,11 +133,14 @@
 						{"data" : "gName"},
 						{"data" : "cName"},
 						{"data" : "entrytime",render : function(d) {
-								return d.split(".")[0];
+							return d.split(".")[0];
 						}},
 						{"data" : "updatetime",render : function(d) {
-								return d.split(".")[0];
-						}} 
+							return d.split(".")[0];
+						}},
+						{"data" : "id",render : function(){
+							return '<a href="">查看成绩</a>'
+						}}
 						]
 			});
 		}
