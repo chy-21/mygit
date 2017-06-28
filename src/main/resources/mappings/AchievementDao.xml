@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myEducation.inside.dao.AchievementDao">
+
+	<sql id="table">achievement</sql>
+	<sql id="columns">id,subject,midterm,terminal,createtime,stu_id</sql>
+	
+	<select id="getByStuId" resultType="Achievement">
+		select * from <include refid="table"></include>
+		where stu_id = #{stu_id}
+	</select>
+	
+	<select id="selectByPage" resultType="Achievement">
+		select * from <include refid="table"/>
+		<where>
+			<if test="params.midterm != null and params.midterm != ''">
+				Achievement.midterm like CONCAT(CONCAT('%', #{params.midterm}), '%')
+			</if>
+			<if test="params.terminal != null and params.terminal != ''">
+				and Achievement.terminal like CONCAT(CONCAT('%', #{params.terminal}), '%')
+			</if>
+		</where>
+		order by id
+	</select>
+	
+	<select id="getById" resultType="Achievement">
+		select * from <include refid="table"/>
+		where id=#{id}
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
+		insert into <include refid="table"/>(
+			subject,midterm,terminal,createtime,stu_id
+		) values (
+			#{subject},#{midterm},#{terminal},createtime,#{stu_id}
+		)
+	</insert>
+	
+	<update id="update">
+		update <include refid="table"/> 
+		set 
+			subject = #{subject},
+			midterm = #{midterm},
+			terminal = #{terminal},
+			stu_id = #{stu_id}
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from <include refid="table"/>
+		where id=#{id}
+	</delete>
+</mapper>
