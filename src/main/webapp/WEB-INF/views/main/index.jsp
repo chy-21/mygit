@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-	<title>主页面</title>
+	<title>教育管理系统主页面</title>
 	<!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/static/global/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/static/global/js/plugins/jquery.datetimepicker/css/jquery.datetimepicker.css" rel="stylesheet">

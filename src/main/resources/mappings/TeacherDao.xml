@@ -52,9 +52,9 @@
 		where id=#{id}
 	</delete>
 	
-<!-- 	<select id="getAll" resultType="HashMap"> -->
-<!-- 		select id as value,name as label -->
-<!-- 		from <include refid="table"></include> -->
-<!-- 		order by id -->
-<!-- 	</select> -->
+	<select id="getAll" resultType="HashMap">
+		select id as value,name as label
+		from <include refid="table"></include>
+		order by id
+	</select>
 </mapper>

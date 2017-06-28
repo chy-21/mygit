@@ -30,7 +30,7 @@
 <body>
 	<div id="wrapper">
 		<jsp:include page="../include/nav.jsp">
-			<jsp:param name="menu_parent_id" value="2" />
+			<jsp:param name="menu_id" value="2" />
 		</jsp:include>
 		<div id="page-wrapper">
 

@@ -139,7 +139,7 @@
 							return d.split(".")[0];
 						}},
 						{"data" : "id",render : function(){
-							return '<a href="">查看成绩</a>'
+							return '<a href="${pageContext.request.contextPath}/main/manager/ahievement">查看成绩</a>'
 						}}
 						]
 			});

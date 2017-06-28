@@ -18,6 +18,8 @@ public class Achievement implements Serializable {
 	// 对应学生ID
 	private Long stu_id;
 
+	private String stuName;
+
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +58,14 @@ public class Achievement implements Serializable {
 
 	public void setStu_id(Long stu_id) {
 		this.stu_id = stu_id;
+	}
+
+	public String getStuName() {
+		return stuName;
+	}
+
+	public void setStuName(String stuName) {
+		this.stuName = stuName;
 	}
 
 }

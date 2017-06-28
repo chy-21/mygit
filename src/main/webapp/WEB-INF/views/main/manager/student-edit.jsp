@@ -35,8 +35,7 @@
 <body>
 <div id="wrapper">
     <jsp:include page="../include/nav.jsp">
-        <jsp:param name="menu_parent_id" value="1"/>
-        <jsp:param name="menu_id" value="3"/>
+        <jsp:param name="menu_id" value="4"/>
     </jsp:include>
     <div id="page-wrapper">
         <div class="container-fluid">
@@ -109,8 +108,8 @@
                             <div class="col-lg-2"><label>民族</label></div>
                             <div class="col-lg-4">
                                 <select class="form-control" name="nation">
-                                    <c:forEach items="${nation}" var="m">
-                                        <option value="${m.value}" ${m.value == student.nation ? 'selected':''}>${m.name}</option>
+                                    <c:forEach items="${nation}" var="n">
+                                        <option value="${n.value}" ${n.value == student.nation ? 'selected':''}>${n.name}</option>
                                     </c:forEach>
                                 </select>
                             </div>
