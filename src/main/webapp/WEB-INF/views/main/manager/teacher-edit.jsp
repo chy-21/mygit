@@ -69,7 +69,7 @@
 				
                     <form id="teacherForm" action="${pageContext.request.contextPath}/main/manager/teacher/edit"
                           method="post" user="form">
-                        <input id="userId" name="id" hidden="hidden" value="${teacher.id}">
+                        <input id="tId" name="id" hidden="hidden" value="${teacher.id}">
                        	<div class="row form-group">
                             <div class="col-lg-2"><label>名称<span class="required"> * </span></label></div>
                             <div class="col-lg-4"><input class="form-control" required="true" id="name" name="name" value="${teacher.name}" placeholder="1到20个字之间">

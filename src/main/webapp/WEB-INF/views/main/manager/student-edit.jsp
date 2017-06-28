@@ -68,7 +68,7 @@
                     </div>
                     <form id="studentForm" action="${pageContext.request.contextPath}/main/manager/student/edit"
                           method="post" user="form">
-                        <input id="userId" name="id" hidden="hidden" value="${student.id}">
+                        <input id="stuId" name="id" hidden="hidden" value="${student.id}">
                        	<div class="row form-group">
                             <div class="col-lg-2"><label>名称<span class="required"> * </span></label></div>
                             <div class="col-lg-4">

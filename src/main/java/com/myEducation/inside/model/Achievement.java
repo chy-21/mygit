@@ -18,6 +18,8 @@ public class Achievement implements Serializable {
 	// 对应学生ID
 	private Long stu_id;
 
+	private String createtime;
+
 	private String stuName;
 
 	public Long getId() {
@@ -66,6 +68,14 @@ public class Achievement implements Serializable {
 
 	public void setStuName(String stuName) {
 		this.stuName = stuName;
+	}
+
+	public String getCreatetime() {
+		return createtime;
+	}
+
+	public void setCreatetime(String createtime) {
+		this.createtime = createtime;
 	}
 
 }

@@ -20,7 +20,7 @@
 		left join S_class c on student.c_id = c.id
 		<where>
 			<if test="params.name != null and params.name != ''">
-				and student.name like CONCAT(CONCAT('%', #{params.name}), '%')
+				student.name like CONCAT(CONCAT('%', #{params.name}), '%')
 			</if>
 		</where>
 		order by updatetime desc
