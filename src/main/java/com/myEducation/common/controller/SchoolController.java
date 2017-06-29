@@ -52,9 +52,7 @@ public class SchoolController {
 		Result<String> result = new Result<String>();
 		try {
 			if (school.getId() == null) {
-				if (school.getName() == null) {
-					this.schoolService.insert(school);
-				}
+				this.schoolService.insert(school);
 			} else {
 				School s_id = this.schoolService.getById(school.getId());
 				if (s_id == null) {

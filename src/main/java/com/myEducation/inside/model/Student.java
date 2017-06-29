@@ -17,7 +17,7 @@ public class Student implements Serializable {
 
 	private Long id;
 	private String name;
-	private int sex;
+	private String sex;
 	private int age;
 	private String province;
 	private String nation;
@@ -47,11 +47,11 @@ public class Student implements Serializable {
 		this.name = name;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
@@ -141,6 +141,14 @@ public class Student implements Serializable {
 
 	public void setcName(String cName) {
 		this.cName = cName;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", sex=" + sex + ", age=" + age + ", province=" + province
+				+ ", nation=" + nation + ", s_id=" + s_id + ", g_id=" + g_id + ", c_id=" + c_id + ", entrytime="
+				+ entrytime + ", updatetime=" + updatetime + ", sName=" + sName + ", gName=" + gName + ", cName="
+				+ cName + "]";
 	}
 
 }

@@ -12,14 +12,14 @@
 	
 	<select id="selectByPage" resultType="Achievement">
 		select * from <include refid="table"/>
-		<where>
-			<if test="params.midterm != null and params.midterm != ''">
-				Achievement.midterm like CONCAT(CONCAT('%', #{params.midterm}), '%')
-			</if>
-			<if test="params.terminal != null and params.terminal != ''">
-				and Achievement.terminal like CONCAT(CONCAT('%', #{params.terminal}), '%')
-			</if>
-		</where>
+<!-- 		<where> -->
+<!-- 			<if test="params.midterm != null and params.midterm != ''"> -->
+<!-- 				Achievement.midterm like CONCAT(CONCAT('%', #{params.midterm}), '%') -->
+<!-- 			</if> -->
+<!-- 			<if test="params.terminal != null and params.terminal != ''"> -->
+<!-- 				and Achievement.terminal like CONCAT(CONCAT('%', #{params.terminal}), '%') -->
+<!-- 			</if> -->
+<!-- 		</where> -->
 		order by id
 	</select>
 	

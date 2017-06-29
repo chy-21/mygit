@@ -64,7 +64,7 @@ public class StudentController {
 				}
 				s_id.setName(student.getName());
 				s_id.setSex(student.getSex());
-				s_id.setAge(student.getSex());
+				s_id.setAge(student.getAge());
 				s_id.setProvince(student.getProvince());
 				s_id.setNation(student.getNation());
 				s_id.setS_id(student.getS_id());;

@@ -17,13 +17,18 @@ public class StudentTest {
 
 	@Test
 	public void test() {
+//		name,sex,age,province,nation,s_id,g_id,c_id,entrytime,updatetime
 //		System.out.println("student");
 		Student student = new Student();
 		student.setName("小明");
-//		student.setOICQ("1340785888");
+		student.setSex("女");
 		student.setAge(12);
-		student.setSex(0);
-//		System.out.println(student.toString());
+		student.setProvince("福建省");
+		student.setNation("汉族");
+		student.setS_id(1);
+		student.setG_id(1);
+		student.setC_id(1);
+		System.out.println(student.toString());
 		
 		studentDao.insert(student);
 	}

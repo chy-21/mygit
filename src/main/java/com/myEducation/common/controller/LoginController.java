@@ -40,8 +40,7 @@ public class LoginController extends BaseController {
 		User u_id = getUser();
 		if (!user.getUsername().equals(u_id.getUsername())) {
 			result.setStatus(ResultStatus.ACCOUNT_NOTFOUND);
-		}
-		if (!user.getPassword().toUpperCase().equals(MD5Utils.md5(u_id.getPassword().toUpperCase()))) {
+		}else if (!user.getPassword().toUpperCase().equals(MD5Utils.md5(u_id.getPassword().toUpperCase()))) {
 			result.setStatus(ResultStatus.USER_PASSWORD_ERROR);
 		}
 		return result;

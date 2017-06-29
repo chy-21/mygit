@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myEducation.inside.dao.RoleDao">
+    
+    <sql id="table">role</sql>
+    <sql id="Columns">
+    	id,name,status,createtime,updatetime
+    </sql>
+	
+<!-- 	<select id="selectByName" resultType="Role"> -->
+<!-- 		select * from <include refid="table"/> -->
+<!-- 		where name = #{name} -->
+<!-- 	</select> -->
+	
+	<select id="selectByPage" resultType="Role">
+		select * from <include refid="table"/>
+		<where>
+			id = #{id}
+		</where>
+		order by createtime asc
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Role">
+		insert into <include refid="table"/>(
+			name,status
+		) values (
+			#{name},
+			#{status}
+		)
+	</insert>
+	
+	<update id="update">
+		update <include refid="table"/> 
+		set 
+			name=#{name},
+			status=#{status}
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from <include refid="table"/>
+		where id=#{id}
+	</delete>
+</mapper>

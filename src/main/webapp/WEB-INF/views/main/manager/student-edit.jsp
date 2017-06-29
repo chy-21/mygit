@@ -97,9 +97,9 @@
                         <div class="row form-group">
                             <div class="col-lg-2"><label>省份</label></div>
                             <div class="col-lg-4">
-                                <select class="form-control" name="nation">
+                                <select class="form-control" name="province">
                                     <c:forEach items="${province}" var="p">
-                                        <option value="${p.value}" ${p.value == student.nation ? 'selected':''}>${p.name}</option>
+                                        <option value="${p.value}" ${p.value == student.province ? 'selected':''}>${p.name}</option>
                                     </c:forEach>
                                 </select>
                             </div>

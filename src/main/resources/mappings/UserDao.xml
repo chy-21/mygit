@@ -15,8 +15,8 @@
 	<select id="selectByPage" resultType="User">
 		select * from <include refid="table"/>
 		<where>
-			<if test="params.name != null and params.name != ''">
-				and username like CONCAT(CONCAT('%', #{params.username}), '%')
+			<if test="params.username != null and params.username != ''">
+				username like CONCAT(CONCAT('%', #{params.username}), '%')
 			</if>
 		</where>
 		order by entrytime asc

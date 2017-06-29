@@ -26,18 +26,18 @@ public class UserController {
 		return "main/manager/user-list";
 	}
 	
-	@RequestMapping("/data")
+	@RequestMapping("data")
 	@ResponseBody
 	public Page<User> userPage(Page<User> page){
 		return userService.selectByPage(page);
 	}
 	
-	@RequestMapping("add")
+	@RequestMapping("edit")
 	public String add(){
 		return "main/manager/user-edit";
 	}
 	
-	@RequestMapping("user-edit/{userId}")
+	@RequestMapping("edit/{userId}")
 	public String edit(@PathVariable("userId")Long userId,Model model){
 		model.addAttribute("user",this.userService.getById(userId));
 		return "main/manager/user-edit";

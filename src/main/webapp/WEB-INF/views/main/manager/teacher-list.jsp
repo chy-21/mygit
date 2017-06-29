@@ -49,7 +49,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-                        		<a href="${pageContext.request.contextPath}/main/manager/teacher/edit"
+                        <a href="${pageContext.request.contextPath}/main/manager/teacher/edit"
                           			 class="btn btn-primary">添加老师</a>
 					</div>
 					<div class="col-lg-6 form-inline text-right">

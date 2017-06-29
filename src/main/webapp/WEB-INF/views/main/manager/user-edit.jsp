@@ -67,7 +67,7 @@
                         <h3>用户基本信息</h3>
                     </div>
 
-                    <form id="userForm" action="${pageContext.request.contextPath}/main/manager/user/user-edit"
+                    <form id="userForm" action="${pageContext.request.contextPath}/main/manager/user/edit"
                           method="post" user="form">
                         <input id="userId" name="id" hidden="hidden" value="${user.id}">
                        	<div class="row form-group">
@@ -156,7 +156,7 @@
                         position: 'mid-center',
                         loaderBg: '#00C1DE',
                         afterHidden: function () {
-                            window.location.href = '${pageContext.request.contextPath}/dashboard/manager/user';
+                            window.location.href = '${pageContext.request.contextPath}/main/manager/user';
                         }
                     });
                 } else {

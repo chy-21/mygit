@@ -52,7 +52,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 <!-- 						<shiro:hasPermission name="user-add"> -->
-							<a href="${pageContext.request.contextPath}/main/manager/user/add" class="btn btn-primary">添加用户</a>
+							<a href="${pageContext.request.contextPath}/main/manager/user/edit" class="btn btn-primary">添加用户</a>
 <!-- 						</shiro:hasPermission> -->
 <!-- 						<shiro:hasPermission name="user-edit"> -->
 							<button type="button" id="user-edit" class="btn btn-info hidden">编辑用户</button>
@@ -69,8 +69,8 @@
 					</div>
 					<div class="col-lg-6 form-inline text-right">
 						<div class="form-group">
-							<label for="searchName">名称:</label> <input class="form-control"
-								id="searchName" type="text" />
+							<label for="searchName">名称:</label> 
+							<input class="form-control" id="searchName" type="text" />
 						</div>
 						<button id="searchBtn" class="btn btn-purple">搜索</button>
 					</div>
@@ -127,7 +127,7 @@
 				"ajax" : {
 					"url" : p+ "/main/manager/user/data",
 					data : function(d) {
-						d["params[name]"] = $("#searchName").val();
+						d["params[username]"] = $("#searchName").val();
 					}
 				},
 				"order" : [ [ 2, "desc" ] ],

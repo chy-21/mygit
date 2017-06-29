@@ -130,30 +130,30 @@
     var autoData;
     $(document).ready(function () {
     	
-//         $('#achievementForm').ajaxForm({
-//             beforeSubmit: function () {
-//                 return $('#achievementForm').valid();
-//             },
-//             success: function (data) {
-//                 if (!data.status) {
-//                     $.toast({
-//                         heading: '添加/编辑学生!',
-//                         text: '成功!',
-//                         icon: 'info',
-//                         position: 'mid-center',
-//                         loaderBg: '#00C1DE',
-//                         afterHidden: function () {
-//                             window.location.href = '${pageContext.request.contextPath}/main/manager/achievement';
-//                         }
-//                     });
-//                 } else {
-//                     $.alert({
-//                         title: '编辑失败!',
-//                         content: data.status == 10001 ? data.content : data.msg
-//                     });
-//                 }
-//             }
-//         });
+        $('#achievementForm').ajaxForm({
+            beforeSubmit: function () {
+                return $('#achievementForm').valid();
+            },
+            success: function (data) {
+                if (!data.status) {
+                    $.toast({
+                        heading: '添加/编辑成绩!',
+                        text: '成功!',
+                        icon: 'info',
+                        position: 'mid-center',
+                        loaderBg: '#00C1DE',
+                        afterHidden: function () {
+                            window.location.href = '${pageContext.request.contextPath}/main/manager/achievement';
+                        }
+                    });
+                } else {
+                    $.alert({
+                        title: '编辑失败!',
+                        content: data.status == 10001 ? data.content : data.msg
+                    });
+                }
+            }
+        });
     });
 
 </script>

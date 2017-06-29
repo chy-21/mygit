@@ -18,8 +18,7 @@ public class Teacher implements Serializable {
 
 	private String name;
 
-	// 性别：0为男，1为女
-	private int sex;
+	private String sex;
 
 	private int age;
 
@@ -57,11 +56,11 @@ public class Teacher implements Serializable {
 		this.name = name;
 	}
 
-	public int getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(int sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 

@@ -16,7 +16,7 @@
 		select * from <include refid="table"/>
 		<where>
 			<if test="params.name != null and params.name != ''">
-				and name like CONCAT(CONCAT('%', #{params.name}), '%')
+				name like CONCAT(CONCAT('%', #{params.name}), '%')
 			</if>
 		</where>
 		order by entrytime desc
