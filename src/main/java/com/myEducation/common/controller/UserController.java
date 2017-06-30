@@ -69,26 +69,26 @@ public class UserController {
 		return result;
 	}
 	
-//	@RequestMapping(value="status",method=RequestMethod.POST)
-//	public Result<?> userStatus(User user){
-//		Result<String> result = new Result<String>();
-//		try {
-//			User u_id = this.userService.getById(user.getId());
-//			if (u_id == null) {
-//				result.setStatus(ResultStatus.DATA_NOTFOUND);
-//				return result;
-//			}
-//			u_id.setStatus(user.getStatus());
-//			this.userService.update(u_id);
-//			result.setStatus(ResultStatus.SUCCESS);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			result.setStatus(ResultStatus.FAIL);
-//			result.setContent(e.getMessage());
-//		}
-//		return result;
-//	}
-	
+	@RequestMapping(value="status",method=RequestMethod.POST)
+	@ResponseBody
+	public Result<?> userStatus(User user){
+		Result<String> result = new Result<String>();
+		try {
+			User u_id = this.userService.getById(user.getId());
+			if (u_id == null) {
+				result.setStatus(ResultStatus.DATA_NOTFOUND);
+				return result;
+			}
+			u_id.setStatus(user.getStatus());
+			this.userService.update(u_id);
+			result.setStatus(ResultStatus.SUCCESS);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			result.setStatus(ResultStatus.FAIL);
+			result.setContent(e.getMessage());
+		}
+		return result;
+	}
 	
 	@RequestMapping(value="delete",method=RequestMethod.POST)
 	public String userDelete(User user){

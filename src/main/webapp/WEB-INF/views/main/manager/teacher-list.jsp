@@ -49,8 +49,14 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-                        <a href="${pageContext.request.contextPath}/main/manager/teacher/edit"
-                          			 class="btn btn-primary">添加老师</a>
+<!--                        <shiro:hasPermission name="add"> -->
+                        	<a href="${pageContext.request.contextPath}/main/manager/teacher/edit" class="btn btn-primary">添加老师</a>
+<%-- 						</shiro:hasPermission> --%>
+<%-- 						<shiro:hasPermission name="edit"> --%>
+                        	<button type="button" id="edit" class="btn btn-info hidden">编辑老师</button>
+<%-- 	                    </shiro:hasPermission> --%>
+<%-- 	                    <shiro:hasPermission name="user-delete"> --%>
+	                        <button type="button" id="delete" class="btn btn-danger hidden">删除老师</button>
 					</div>
 					<div class="col-lg-6 form-inline text-right">
 						<div class="form-group">
@@ -99,6 +105,73 @@
 		var datatables;
 		$(function() {
 			initTable();
+			
+			$('#data-table tbody').on('click', 'tr', function () {
+	            if ($(this).hasClass('selected')) {
+	            }
+	            else {
+	                datatables.$('tr.selected').removeClass('selected');
+	                $(this).addClass('selected');
+	            }
+	            var tr = $(this).closest('tr');
+	            var row = datatables.row(tr).data();
+	            $("#delete").removeClass('hidden');
+	            $("#edit").removeClass('hidden');
+	        });
+	        $("#searchBtn").click(function () {
+	            datatables.ajax.reload();
+	        });
+	        $("#edit").click(function () {
+	            var d = datatables.row('.selected').data();
+	            window.location.href = p + "/main/manager/teacher/edit/" + d.id;
+	        });
+	        
+	        $("#delete").click(function () {
+	            var d = datatables.row('.selected').data();
+	            $.confirm({
+	                icon: 'glyphicon glyphicon-bell',
+	                title: '提示',
+	                content: '是否确认删除该用户?',
+	                type: 'red',
+	                typeAnimated: true,
+	                buttons: {
+	                    tryAgain: {
+	                        text: '确认',
+	                        btnClass: 'btn-green',
+	                        action: function () {
+	                            $.ajax({
+	                                url: "${pageContext.request.contextPath}/main/manager/teacher/delete/",
+	                                method: 'post',
+	                                data: {id: d.id},
+	                                success: function (data) {
+	                                    if (!data.status) {
+	                                        $.toast({
+	                                            heading: '提示',
+	                                            text: '成功!',
+	                                            icon: 'info',
+	                                            position: 'mid-center',
+	                                            loaderBg: '#00C1DE',
+	                                            afterHidden: function () {
+	                                                datatables.ajax.reload();
+	                                            }
+	                                        });
+	                                    } else {
+	                                        $.alert({
+	                                            title: '提示',
+	                                            content: data.content
+	                                        });
+	                                    }
+	                                }
+	                            });
+	                        }
+	                    },
+	                    close: {
+	                        text: '取消'
+	                    }
+	                }
+	            });
+	        })
+	        
 		})
 
 		function initTable() {

@@ -51,6 +51,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 							<a href="${pageContext.request.contextPath}/main/manager/school/edit" class="btn btn-primary">添加学校</a>
+                        	<button type="button" id="edit" class="btn btn-info hidden">编辑学校</button>
 					</div>
 					<div class="col-lg-6 form-inline text-right">
 						<div class="form-group">
@@ -94,6 +95,25 @@
 		var datatables;
 		$(function() {
 			initTable();
+			$('#data-table tbody').on('click', 'tr', function () {
+	            if ($(this).hasClass('selected')) {
+	            }
+	            else {
+	                datatables.$('tr.selected').removeClass('selected');
+	                $(this).addClass('selected');
+	            }
+	            var tr = $(this).closest('tr');
+	            var row = datatables.row(tr).data();
+	            $("#edit").removeClass('hidden');
+	        });
+	        $("#searchBtn").click(function () {
+	            datatables.ajax.reload();
+	        });
+	        $("#edit").click(function () {
+	            var d = datatables.row('.selected').data();
+	            window.location.href = p + "/main/manager/teacher/edit/" + d.id;
+	        });
+	        
 		})
 
 		function initTable() {

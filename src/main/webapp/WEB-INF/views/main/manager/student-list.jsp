@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%-- <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh">
 <head>
@@ -52,9 +53,15 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-							<a href="${pageContext.request.contextPath}/main/manager/student/edit" class="btn btn-primary">添加学生</a>
-<%-- 							<a href="${pageContext.request.contextPath}/main/manager/student/stu-edit" class="btn btn-primary">编辑</a> --%>
-<%-- 							<a href="${pageContext.request.contextPath}/main/manager/student/stu-delete" class="btn btn-primary">删除</a> --%>
+<%-- 						<shiro:hasPermission name="add"> --%>
+							<a href="${pageContext.request.contextPath}/main/manager/student/add" class="btn btn-primary">添加学生</a>
+<%-- 						</shiro:hasPermission> --%>
+<%-- 						<shiro:hasPermission name="edit"> --%>
+                        	<button type="button" id="edit" class="btn btn-info hidden">编辑学生</button>
+<%-- 	                    </shiro:hasPermission> --%>
+<%-- 	                    <shiro:hasPermission name="user-delete"> --%>
+	                        <button type="button" id="delete" class="btn btn-danger hidden">删除学生</button>
+<%-- 	                    </shiro:hasPermission> --%>
 					</div>
 					<div class="col-lg-6 form-inline text-right">
 						<div class="form-group">
@@ -104,6 +111,72 @@
 		var datatables;
 		$(function() {
 			initTable();
+			$('#data-table tbody').on('click', 'tr', function () {
+	            if ($(this).hasClass('selected')) {
+	            }
+	            else {
+	                datatables.$('tr.selected').removeClass('selected');
+	                $(this).addClass('selected');
+	            }
+	            var tr = $(this).closest('tr');
+	            var row = datatables.row(tr).data();
+	            $("#delete").removeClass('hidden');
+	            $("#edit").removeClass('hidden');
+	        });
+	        $("#searchBtn").click(function () {
+	            datatables.ajax.reload();
+	        });
+	        $("#edit").click(function () {
+	            var d = datatables.row('.selected').data();
+	            window.location.href = p + "/main/manager/student/edit/" + d.id;
+	        });
+	        
+	        $("#delete").click(function () {
+	            var d = datatables.row('.selected').data();
+	            $.confirm({
+	                icon: 'glyphicon glyphicon-bell',
+	                title: '提示',
+	                content: '是否确认删除该用户?',
+	                type: 'red',
+	                typeAnimated: true,
+	                buttons: {
+	                    tryAgain: {
+	                        text: '确认',
+	                        btnClass: 'btn-red',
+	                        action: function () {
+	                            $.ajax({
+	                                url: "${pageContext.request.contextPath}/main/manager/student/delete/",
+	                                method: 'post',
+	                                data: {id: d.id},
+	                                success: function (data) {
+	                                    if (!data.status) {
+	                                        $.toast({
+	                                            heading: '提示',
+	                                            text: '成功!',
+	                                            icon: 'info',
+	                                            position: 'mid-center',
+	                                            loaderBg: '#00C1DE',
+	                                            afterHidden: function () {
+	                                                datatables.ajax.reload();
+	                                            }
+	                                        });
+	                                    } else {
+	                                        $.alert({
+	                                            title: '提示',
+	                                            content: data.content
+	                                        });
+	                                    }
+	                                }
+	                            });
+	                        }
+	                    },
+	                    close: {
+	                        text: '取消'
+	                    }
+	                }
+	            });
+	        })
+	        
 		})
 
 		function initTable() {
@@ -119,13 +192,7 @@
 				"order" : [ [ 6, "desc" ] ],
 				"columns" : [
 						{"data" : "name"},
-						{"data" : "sex",render : function(d){
-							if(d == 0){
-								return "男";
-							}else{
-								return "女";
-							}
-						}},
+						{"data" : "sex"},
 						{"data" : "age"},
 						{"data" : "province"},
 						{"data" : "nation"},
@@ -138,8 +205,8 @@
 						{"data" : "updatetime",render : function(d) {
 							return d.split(".")[0];
 						}},
-						{"data" : "id",render : function(){
-							return '<a href="${pageContext.request.contextPath}/main/manager/achievement">查看成绩</a>'
+						{"data" : "id",render : function(data, type, full, meta){
+							return '<a href="'+ p +'/main/manager/achievement/'+ data +'">查看成绩</a>'
 						}}
 						]
 			});

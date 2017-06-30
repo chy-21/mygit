@@ -77,6 +77,12 @@ public class TeacherController {
 		return result;
 	}
 	
+	@RequestMapping(value="delete",method=RequestMethod.POST)
+	public String delete(Teacher teacher){
+		this.teacherService.delete(teacher.getId());
+		return "main/manager/teacher-list";
+	}
+	
 	@RequestMapping("autoTeacher")
 	@ResponseBody
 	public List<HashMap<String, Object>> getTeacherAll(){

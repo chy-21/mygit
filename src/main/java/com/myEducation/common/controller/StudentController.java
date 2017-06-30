@@ -36,7 +36,7 @@ public class StudentController {
 		return this.studentService.selectByPage(page);
 	}
 
-	@RequestMapping("edit")
+	@RequestMapping("add")
 	public String add(Model model) {
 		initDict(model);
 		return "main/manager/student-edit";
@@ -79,6 +79,12 @@ public class StudentController {
 			result.setContent(e.getMessage());
 		}
 		return result;
+	}
+	
+	@RequestMapping(value="delete",method=RequestMethod.POST)
+	public String delete(Student student){
+		this.studentService.delete(student.getId());
+		return "main/manager/student-list";
 	}
 	
 	public void initDict(Model model){

@@ -67,7 +67,7 @@
                         <h3>学生基本信息</h3>
                     </div>
 					<!-- id,subject,midterm,terminal,stu_id -->
-                    <form id="achievementForm" action="${pageContext.request.contextPath}/main/manager/Achievement/edit"
+                    <form id="achievementForm" action="${pageContext.request.contextPath}/main/manager/achievement/edit"
                           method="post" user="form">
                         <input id="achId" name="id" hidden="hidden" value="${achievement.id}">
                         <div class="row form-group">
@@ -82,13 +82,13 @@
                         </div>
                         <div class="row form-group">
                             <div class="col-lg-2"><label>期中考试</label></div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-1">
                             	<input class="form-control" id="midterm" name="midterm" value="${achievement.midterm}"/>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-lg-2"><label>期末考试</label></div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-1">
                             	<input class="form-control" id="terminal" name="terminal" value="${achievement.terminal}"/>
                             </div>
                         </div>
@@ -153,8 +153,8 @@
                     });
                 }
             }
-        });
-    });
+        })
+    })
 
 </script>
 </body>

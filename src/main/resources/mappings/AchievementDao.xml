@@ -12,27 +12,23 @@
 	
 	<select id="selectByPage" resultType="Achievement">
 		select * from <include refid="table"/>
-<!-- 		<where> -->
+		<where>
+			stu_id = #{stu_id}
 <!-- 			<if test="params.midterm != null and params.midterm != ''"> -->
 <!-- 				Achievement.midterm like CONCAT(CONCAT('%', #{params.midterm}), '%') -->
 <!-- 			</if> -->
 <!-- 			<if test="params.terminal != null and params.terminal != ''"> -->
 <!-- 				and Achievement.terminal like CONCAT(CONCAT('%', #{params.terminal}), '%') -->
 <!-- 			</if> -->
-<!-- 		</where> -->
+		</where>
 		order by id
-	</select>
-	
-	<select id="getById" resultType="Achievement">
-		select * from <include refid="table"/>
-		where id=#{id}
 	</select>
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
 		insert into <include refid="table"/>(
-			subject,midterm,terminal,createtime,stu_id
+			subject,midterm,terminal,stu_id
 		) values (
-			#{subject},#{midterm},#{terminal},createtime,#{stu_id}
+			#{subject},#{midterm},#{terminal},#{stu_id}
 		)
 	</insert>
 	

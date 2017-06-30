@@ -12,6 +12,11 @@
 		where username = #{username}
 	</select>
 	
+	<select id="getById" resultType="User">
+		select * from<include refid="table"/>
+		where id=#{id}
+	</select>
+	
 	<select id="selectByPage" resultType="User">
 		select * from <include refid="table"/>
 		<where>

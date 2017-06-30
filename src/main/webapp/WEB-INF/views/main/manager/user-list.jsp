@@ -55,13 +55,13 @@
 							<a href="${pageContext.request.contextPath}/main/manager/user/edit" class="btn btn-primary">添加用户</a>
 <!-- 						</shiro:hasPermission> -->
 <!-- 						<shiro:hasPermission name="user-edit"> -->
-							<button type="button" id="user-edit" class="btn btn-info hidden">编辑用户</button>
+							<button type="button" id="edit" class="btn btn-info hidden">编辑用户</button>
 <!-- 						</shiro:hasPermission> -->
 <!-- 						<shiro:hasPermission name="user-delete"> -->
-<!-- 							<button type="button" id="user-delete" class="btn btn-danger hidden">删除用户</button> -->
+							<button type="button" id="delete" class="btn btn-danger hidden">删除用户</button>
 <!-- 						</shiro:hasPermission> -->
 <!-- 						<shiro:hasPermission name="user-status"> -->
-<!-- 							<button type="button" id="user-status" class="btn btn-default hidden">禁用用户</button> -->
+							<button type="button" id="status" class="btn btn-default hidden">禁用用户</button>
 <!-- 						</shiro:hasPermission> -->
 <!-- 						<shiro:hasPermission name="user-updatePwd"> -->
 <!-- 							<button type="button" id="user-updatePwd" class="btn btn-warning hidden">密码重置</button> -->
@@ -117,7 +117,130 @@
 		var p = '${pageContext.request.contextPath}';
 		var datatables;
 		$(function() {
+			
 			initTable();
+			
+			$('#data-table tbody').on('click', 'tr', function () {
+	            if ($(this).hasClass('selected')) {
+	            }
+	            else {
+	                datatables.$('tr.selected').removeClass('selected');
+	                $(this).addClass('selected');
+	            }
+	            var tr = $(this).closest('tr');
+	            var row = datatables.row(tr).data();
+	            $("#delete").removeClass('hidden');
+	            if (row.status) {
+	                $("#status").text('启用用户').removeClass('hidden');
+	                $("#edit").addClass('hidden');
+	            } else {
+	                $("#status").text('禁用用户').removeClass('hidden');
+	                $("#edit").removeClass('hidden');
+
+	            };
+// 	            $("#user-updatePwd").removeClass('hidden')
+	        });
+	        $("#searchBtn").click(function () {
+	            datatables.ajax.reload();
+	        });
+	        $("#edit").click(function () {
+	            var d = datatables.row('.selected').data();
+	            window.location.href = p + "/dashboard/manager/user/edit/" + d.id;
+	        });
+	        $("#status").click(function () {
+	            var d = datatables.row('.selected').data();
+	            var t = d.status == 0 ? '禁用' : '启用';
+	            var t1 = d.status == 0 ? 1 : 0;
+	            $.confirm({
+	                icon: 'glyphicon glyphicon-bell',
+	                title: '提示',
+	                content: '是否确认' + t + '该用户?',
+	                type: 'red',
+	                typeAnimated: true,
+	                buttons: {
+	                    tryAgain: {
+	                        text: '确认',
+	                        btnClass: 'btn-red',
+	                        action: function () {
+	                            $.ajax({
+	                                url: "${pageContext.request.contextPath}/main/manager/user/status",
+	                                method: 'post',
+	                                data: {id: d.id, status: t1},
+	                                success: function (data) {
+	                                    if (!data.status) {
+	                                        $.toast({
+	                                            heading: '提示',
+	                                            text: '成功!',
+	                                            icon: 'info',
+	                                            position: 'mid-center',
+	                                            loaderBg: '#00C1DE',
+	                                            afterHidden: function () {
+	                                                datatables.ajax.reload();
+	                                            }
+	                                        });
+	                                    } else {
+	                                        $.alert({
+	                                            title: '提示',
+	                                            content: data.content
+	                                        });
+	                                    }
+	                                }
+	                            });
+	                        }
+	                    },
+	                    close: {
+	                        text: '取消'
+	                    }
+	                }
+	            });
+	        });
+	        
+	        $("#delete").click(function () {
+	            var d = datatables.row('.selected').data();
+	            $.confirm({
+	                icon: 'glyphicon glyphicon-bell',
+	                title: '提示',
+	                content: '是否确认删除该用户?',
+	                type: 'red',
+	                typeAnimated: true,
+	                buttons: {
+	                    tryAgain: {
+	                        text: '确认',
+	                        btnClass: 'btn-red',
+	                        action: function () {
+	                            $.ajax({
+	                                url: "${pageContext.request.contextPath}/main/manager/user/delete/",
+	                                method: 'post',
+	                                data: {id: d.id},
+	                                success: function (data) {
+	                                    if (!data.status) {
+	                                        $.toast({
+	                                            heading: '提示',
+	                                            text: '成功!',
+	                                            icon: 'info',
+	                                            position: 'mid-center',
+	                                            loaderBg: '#00C1DE',
+	                                            afterHidden: function () {
+	                                                datatables.ajax.reload();
+	                                            }
+	                                        });
+	                                    } else {
+	                                        $.alert({
+	                                            title: '提示',
+	                                            content: data.content
+	                                        });
+	                                    }
+	                                }
+	                            });
+	                        }
+	                    },
+	                    close: {
+	                        text: '取消'
+	                    }
+	                }
+	            });
+	        })
+	        
 		})
 
 		function initTable() {

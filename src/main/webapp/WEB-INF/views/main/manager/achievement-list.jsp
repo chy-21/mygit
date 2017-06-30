@@ -52,8 +52,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 							<a href="${pageContext.request.contextPath}/main/manager/achievement/edit" class="btn btn-primary">添加成绩</a>
-<%-- 							<a href="${pageContext.request.contextPath}/main/manager/student/stu-edit" class="btn btn-primary">编辑</a> --%>
-<%-- 							<a href="${pageContext.request.contextPath}/main/manager/student/stu-delete" class="btn btn-primary">删除</a> --%>
+	                        <button type="button" id="delete" class="btn btn-danger hidden">删除成绩</button>
 					</div>
 				</div>
 				<div class="col-lg-12">
@@ -89,6 +88,63 @@
 		var datatables;
 		$(function() {
 			initTable();
+			
+			$('#data-table tbody').on('click', 'tr', function () {
+	            if ($(this).hasClass('selected')) {
+	            }
+	            else {
+	                datatables.$('tr.selected').removeClass('selected');
+	                $(this).addClass('selected');
+	            }
+	            var tr = $(this).closest('tr');
+	            $("#delete").removeClass('hidden');
+	        });
+			
+			$("#delete").click(function () {
+	            var d = datatables.row('.selected').data();
+	            $.confirm({
+	                icon: 'glyphicon glyphicon-bell',
+	                title: '提示',
+	                content: '是否确认删除该用户?',
+	                type: 'red',
+	                typeAnimated: true,
+	                buttons: {
+	                    tryAgain: {
+	                        text: '确认',
+	                        btnClass: 'btn-red',
+	                        action: function () {
+	                            $.ajax({
+	                                url: "${pageContext.request.contextPath}/main/manager/achievement/delete/",
+	                                method: 'post',
+	                                data: {id: d.id},
+	                                success: function (data) {
+	                                    if (!data.status) {
+	                                        $.toast({
+	                                            heading: '提示',
+	                                            text: '成功!',
+	                                            icon: 'info',
+	                                            position: 'mid-center',
+	                                            loaderBg: '#00C1DE',
+	                                            afterHidden: function () {
+	                                                datatables.ajax.reload();
+	                                            }
+	                                        });
+	                                    } else {
+	                                        $.alert({
+	                                            title: '提示',
+	                                            content: data.content
+	                                        });
+	                                    }
+	                                }
+	                            });
+	                        }
+	                    },
+	                    close: {
+	                        text: '取消'
+	                    }
+	                }
+	            });
+	        })
 		})
 
 		function initTable() {
@@ -97,16 +153,15 @@
 				"processing" : true,
 				"ajax" : {
 					"url" : p+ "/main/manager/achievement/data"
-// 					data : function(d) {
-// 						d["params[name]"] = $("#searchName").val();
-// 					}
 				},
-				"order" : [ [ 0, "asc" ] ],
+				"order" : [ [ 3, "asc" ] ],
 				"columns" : [
 						{"data" : "subject"},
 						{"data" : "midterm"},
 						{"data" : "terminal"},
-						{"data" : "createtime"}
+						{"data" : "createtime",render : function(d) {
+							return d.split(".")[0];
+						}}
 						]
 			});
 		}
