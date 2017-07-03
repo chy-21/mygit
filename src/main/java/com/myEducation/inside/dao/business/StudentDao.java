@@ -1,10 +1,10 @@
-package com.myEducation.inside.dao;
+package com.myEducation.inside.dao.business;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.myEducation.inside.model.Student;
+import com.myEducation.inside.model.business.Student;
 import com.myEducation.inside.utils.baseDao.BaseDao;
 import com.myEducation.inside.utils.page.Page;
 

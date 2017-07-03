@@ -38,7 +38,7 @@
             	/static/**=anon
                 /login=anon
                 /error/*=anon
-                /main/manager/** = authc 
+<!--                 /main/business/** = authc  -->
             </value>  
         </property>  
     </bean>  

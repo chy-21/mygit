@@ -1,10 +1,10 @@
-package com.myEducation.inside.service;
+package com.myEducation.inside.service.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myEducation.inside.dao.StudentDao;
-import com.myEducation.inside.model.Student;
+import com.myEducation.inside.dao.business.StudentDao;
+import com.myEducation.inside.model.business.Student;
 import com.myEducation.inside.utils.page.Page;
 
 @Service

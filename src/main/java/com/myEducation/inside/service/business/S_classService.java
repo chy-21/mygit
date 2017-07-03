@@ -1,4 +1,4 @@
-package com.myEducation.inside.service;
+package com.myEducation.inside.service.business;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myEducation.inside.dao.S_gradeDao;
+import com.myEducation.inside.dao.business.S_classDao;
 
 @Service
-public class S_gradeService {
+public class S_classService {
 
 	@Autowired
-	private S_gradeDao s_gradeDao;
+	private S_classDao s_classDao;
 	
 	public List<HashMap<String, Object>> getAll(){
-		return this.s_gradeDao.getAll();
+		return this.s_classDao.getAll();
 	}
 	
 }

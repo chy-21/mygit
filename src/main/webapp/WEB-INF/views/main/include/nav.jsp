@@ -35,13 +35,13 @@
                 <a href="${pageContext.request.contextPath}/main"><i class="glyphicon glyphicon-king"></i>主界面</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/main/manager/school"><i class="glyphicon glyphicon-home"></i>学校管理</a>
+                <a href="${pageContext.request.contextPath}/main/business/school"><i class="glyphicon glyphicon-home"></i>学校管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/main/manager/teacher"><i class="glyphicon glyphicon-user"></i>教师管理</a>
+                <a href="${pageContext.request.contextPath}/main/business/teacher"><i class="glyphicon glyphicon-user"></i>教师管理</a>
             </li>
             <li>
-                <a href="${pageContext.request.contextPath}/main/manager/student"><i class="glyphicon glyphicon-pencil"></i>学生管理</a>
+                <a href="${pageContext.request.contextPath}/main/business/student"><i class="glyphicon glyphicon-pencil"></i>学生管理</a>
             </li>
             <li>
                 <a href="${pageContext.request.contextPath}/main/manager/user"><i class=" glyphicon glyphicon-eye-open"></i>用户管理</a>

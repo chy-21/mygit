@@ -1,4 +1,4 @@
-package com.myEducation.inside.service;
+package com.myEducation.inside.service.business;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myEducation.inside.dao.SchoolDao;
-import com.myEducation.inside.model.School;
+import com.myEducation.inside.dao.business.SchoolDao;
+import com.myEducation.inside.model.business.School;
 import com.myEducation.inside.utils.page.Page;
 
 @Service
@@ -38,10 +38,14 @@ public class SchoolService {
 	}
 	
 	public School getByName(String name){
-		return this.schoolDao.getbyName(name);
+		return this.schoolDao.getByName(name);
 	}
 	
 	public List<HashMap<String, Object>> getAll(){
 		return this.schoolDao.getAll();
+	}
+	
+	public School getSynById(Long id){
+		return this.schoolDao.getSynById(id);
 	}
 }

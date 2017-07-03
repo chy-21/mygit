@@ -54,7 +54,7 @@
 				<div class="row">
 					<div class="col-lg-6">
 <%-- 						<shiro:hasPermission name="add"> --%>
-							<a href="${pageContext.request.contextPath}/main/manager/student/add" class="btn btn-primary">添加学生</a>
+							<a href="${pageContext.request.contextPath}/main/business/student/add" class="btn btn-primary">添加学生</a>
 <%-- 						</shiro:hasPermission> --%>
 <%-- 						<shiro:hasPermission name="edit"> --%>
                         	<button type="button" id="edit" class="btn btn-info hidden">编辑学生</button>
@@ -128,7 +128,7 @@
 	        });
 	        $("#edit").click(function () {
 	            var d = datatables.row('.selected').data();
-	            window.location.href = p + "/main/manager/student/edit/" + d.id;
+	            window.location.href = p + "/main/business/student/edit/" + d.id;
 	        });
 	        
 	        $("#delete").click(function () {
@@ -145,7 +145,7 @@
 	                        btnClass: 'btn-red',
 	                        action: function () {
 	                            $.ajax({
-	                                url: "${pageContext.request.contextPath}/main/manager/student/delete/",
+	                                url: "${pageContext.request.contextPath}/main/business/student/delete/",
 	                                method: 'post',
 	                                data: {id: d.id},
 	                                success: function (data) {
@@ -184,7 +184,7 @@
 			{
 				"processing" : true,
 				"ajax" : {
-					"url" : p+ "/main/manager/student/data",
+					"url" : p+ "/main/business/student/data",
 					data : function(d) {
 						d["params[name]"] = $("#searchName").val();
 					}
@@ -206,7 +206,7 @@
 							return d.split(".")[0];
 						}},
 						{"data" : "id",render : function(data, type, full, meta){
-							return '<a href="'+ p +'/main/manager/student/ach/'+ data +'">查看成绩</a>'
+							return '<a href="'+ p +'/main/business/student/ach/'+ data +'">查看成绩</a>'
 						}}
 						]
 			});

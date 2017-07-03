@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.myEducation.inside.dao.SchoolDao">
+<mapper namespace="com.myEducation.inside.dao.business.SchoolDao">
     
     <sql id="table">school</sql>
     <sql id="Columns">
     	id,name,headmaster,synopsis,address,entrytime
     </sql>
 	
-	<select id="selectByName" resultType="School">
+	<select id="getByName" resultType="School">
 		select * from <include refid="table"/>
 		where name = #{name}
+	</select>
+	
+	<select id="getSynById" resultType="String">
+		select synopsis from <include refid="table"/>
+		where id = #{id}
 	</select>
 	
 	<select id="selectByPage" resultType="School">

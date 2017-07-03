@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myEducation.inside.model.Student;
-import com.myEducation.inside.service.AchievementService;
+import com.myEducation.inside.model.business.Student;
 import com.myEducation.inside.service.DictService;
-import com.myEducation.inside.service.StudentService;
+import com.myEducation.inside.service.business.AchievementService;
+import com.myEducation.inside.service.business.StudentService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
 import com.myEducation.inside.utils.page.Page;
 
 @Controller
-@RequestMapping("${mainPath}/manager/student")
+@RequestMapping("${mainPath}/business/student")
 public class StudentController {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class StudentController {
 
 	@RequestMapping
 	public String index() {
-		return "main/manager/student-list";
+		return "main/business/student-list";
 	}
 
 	@RequestMapping("data")
@@ -43,14 +43,14 @@ public class StudentController {
 	@RequestMapping("add")
 	public String add(Model model) {
 		initDict(model);
-		return "main/manager/student-edit";
+		return "main/business/student-edit";
 	}
 	
 	@RequestMapping("edit/{stuId}")
 	public String edit(@PathVariable("stuId") Long stuId,Model model) {
 		initDict(model);
 		model.addAttribute("student", this.studentService.getById(stuId));
-		return "main/manager/student-edit";
+		return "main/business/student-edit";
 	}
 
 	@RequestMapping(value="edit",method=RequestMethod.POST)
@@ -88,12 +88,12 @@ public class StudentController {
 	@RequestMapping(value="delete",method=RequestMethod.POST)
 	public String delete(Student student){
 		this.studentService.delete(student.getId());
-		return "main/manager/student-list";
+		return "main/business/student-list";
 	}
 	
 	@RequestMapping("ach/{id}")
 	public String getByStuId(@PathVariable("id")Long id){
-		return "main/manager/student-ach";
+		return "main/business/student-ach";
 	}
 	
 	@RequestMapping(value="ach",method=RequestMethod.POST)

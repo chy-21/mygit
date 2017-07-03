@@ -1,6 +1,6 @@
-package com.myEducation.inside.model;
+package com.myEducation.inside.model.business;
 
-public class S_grade {
+public class S_class {
 
 	private Long id;
 

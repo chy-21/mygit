@@ -1,4 +1,4 @@
-package com.myEducation.inside.service;
+package com.myEducation.inside.service.business;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myEducation.inside.dao.TeacherDao;
-import com.myEducation.inside.model.Teacher;
+import com.myEducation.inside.dao.business.TeacherDao;
+import com.myEducation.inside.model.business.Teacher;
 import com.myEducation.inside.utils.page.Page;
 
 @Service

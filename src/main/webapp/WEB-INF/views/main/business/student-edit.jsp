@@ -52,7 +52,7 @@
                         </li>
                         <li>
                             <i class="fa fa-table"></i> <a
-                                href="${pageContext.request.contextPath}/main/manager/student">学生管理</a>
+                                href="${pageContext.request.contextPath}/main/business/student">学生管理</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-table"></i> 添加/编辑学生资料
@@ -66,7 +66,7 @@
                     <div class="page-header">
                         <h3>学生基本信息</h3>
                     </div>
-                    <form id="studentForm" action="${pageContext.request.contextPath}/main/manager/student/edit"
+                    <form id="studentForm" action="${pageContext.request.contextPath}/main/business/student/edit"
                           method="post" user="form">
                         <input id="stuId" name="id" hidden="hidden" value="${student.id}">
                        	<div class="row form-group">
@@ -195,7 +195,7 @@
                         position: 'mid-center',
                         loaderBg: '#00C1DE',
                         afterHidden: function () {
-                            window.location.href = '${pageContext.request.contextPath}/main/manager/student';
+                            window.location.href = '${pageContext.request.contextPath}/main/business/student';
                         }
                     });
                 } else {
@@ -211,7 +211,7 @@
     
     function initAutocomplateSchool(){
     	$.ajax({
-    		url: "${pageContext.request.contextPath}/main/manager/school/autoSchool",
+    		url: "${pageContext.request.contextPath}/main/business/school/autoSchool",
     		method:'get',
     		dataType:'json',
     		success: function(data){
@@ -242,7 +242,7 @@
     
     function initAutocomplateGrade(){
     	$.ajax({
-    		url: "${pageContext.request.contextPath}/main/manager/s_grade/autoGrade",
+    		url: "${pageContext.request.contextPath}/main/business/s_grade/autoGrade",
     		method:'get',
     		dataType:'json',
     		success: function(data){
@@ -273,7 +273,7 @@
     
     function initAutocomplateClass(){
     	$.ajax({
-    		url:"${pageContext.request.contextPath}/main/manager/s_class/autoClass",
+    		url:"${pageContext.request.contextPath}/main/business/s_class/autoClass",
     		method:'get',
     		datatype:'json',
     		success: function(data){

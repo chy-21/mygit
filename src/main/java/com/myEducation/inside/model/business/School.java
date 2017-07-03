@@ -1,4 +1,4 @@
-package com.myEducation.inside.model;
+package com.myEducation.inside.model.business;
 
 import java.io.Serializable;
 

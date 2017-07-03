@@ -1,34 +1,43 @@
-package com.myEducation.inside.model;
+package com.myEducation.inside.model.business;
 
 import java.io.Serializable;
 
 /**
- * 学生类
+ * 老师模型
  * 
  * @author chy
  *
  */
-public class Student implements Serializable {
-
+public class Teacher implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1054779258769434794L;
+	private static final long serialVersionUID = -3969599711918179951L;
 
 	private Long id;
+
 	private String name;
+
 	private String sex;
+
 	private int age;
-	private String province;
-	private String nation;
-	private int s_id;
+
+	private Long s_id;
+
 	private int g_id;
+
 	private int c_id;
+
+	private String synopsis;
+
 	private String entrytime;
+
 	private String updatetime;
 
 	private String sName;
+
 	private String gName;
+
 	private String cName;
 
 	public Long getId() {
@@ -63,20 +72,12 @@ public class Student implements Serializable {
 		this.age = age;
 	}
 
-	public String getProvince() {
-		return province;
+	public Long getS_id() {
+		return s_id;
 	}
 
-	public void setProvince(String province) {
-		this.province = province;
-	}
-
-	public String getNation() {
-		return nation;
-	}
-
-	public void setNation(String nation) {
-		this.nation = nation;
+	public void setS_id(Long s_id) {
+		this.s_id = s_id;
 	}
 
 	public int getG_id() {
@@ -95,6 +96,14 @@ public class Student implements Serializable {
 		this.c_id = c_id;
 	}
 
+	public String getSynopsis() {
+		return synopsis;
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+
 	public String getEntrytime() {
 		return entrytime;
 	}
@@ -109,14 +118,6 @@ public class Student implements Serializable {
 
 	public void setUpdatetime(String updatetime) {
 		this.updatetime = updatetime;
-	}
-
-	public int getS_id() {
-		return s_id;
-	}
-
-	public void setS_id(int s_id) {
-		this.s_id = s_id;
 	}
 
 	public String getsName() {
@@ -141,14 +142,6 @@ public class Student implements Serializable {
 
 	public void setcName(String cName) {
 		this.cName = cName;
-	}
-
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", sex=" + sex + ", age=" + age + ", province=" + province
-				+ ", nation=" + nation + ", s_id=" + s_id + ", g_id=" + g_id + ", c_id=" + c_id + ", entrytime="
-				+ entrytime + ", updatetime=" + updatetime + ", sName=" + sName + ", gName=" + gName + ", cName="
-				+ cName + "]";
 	}
 
 }

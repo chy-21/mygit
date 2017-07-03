@@ -51,7 +51,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-<%-- 							<a href="${pageContext.request.contextPath}/main/manager/achievement/edit" class="btn btn-primary">添加成绩</a> --%>
+<%-- 							<a href="${pageContext.request.contextPath}/main/business/achievement/edit" class="btn btn-primary">添加成绩</a> --%>
 <!-- 	                        <button type="button" id="delete" class="btn btn-danger hidden">删除成绩</button> -->
 					</div>
 				</div>
@@ -114,7 +114,7 @@
 	                        btnClass: 'btn-red',
 	                        action: function () {
 	                            $.ajax({
-	                                url: "${pageContext.request.contextPath}/main/manager/achievement/delete/",
+	                                url: "${pageContext.request.contextPath}/main/business/achievement/delete/",
 	                                method: 'post',
 	                                data: {id: d.id},
 	                                success: function (data) {
@@ -152,7 +152,7 @@
 			{
 				"processing" : true,
 				"ajax" : {
-					"url" : p+ "/main/manager/student/ach/"
+					"url" : p+ "/main/business/student/ach/"
 				},
 				"order" : [ [ 3, "asc" ] ],
 				"columns" : [

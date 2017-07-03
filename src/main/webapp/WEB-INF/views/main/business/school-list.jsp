@@ -50,7 +50,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-							<a href="${pageContext.request.contextPath}/main/manager/school/edit" class="btn btn-primary">添加学校</a>
+							<a href="${pageContext.request.contextPath}/main/business/school/edit" class="btn btn-primary">添加学校</a>
                         	<button type="button" id="edit" class="btn btn-info hidden">编辑学校</button>
 					</div>
 					<div class="col-lg-6 form-inline text-right">
@@ -68,9 +68,10 @@
 				        <tr>
 				            <th>学校名称</th>
 				            <th>学校负责人</th>
-				            <th>学校简介</th>
+<!-- 				            <th>学校简介</th> -->
 				            <th>学校地址</th>
 				            <th>建校时间</th>
+				            <th>操作</th>
 				        </tr>
 				        </thead>
 				    </table>
@@ -111,7 +112,7 @@
 	        });
 	        $("#edit").click(function () {
 	            var d = datatables.row('.selected').data();
-	            window.location.href = p + "/main/manager/teacher/edit/" + d.id;
+	            window.location.href = p + "/main/business/teacher/edit/" + d.id;
 	        });
 	        
 		})
@@ -121,7 +122,7 @@
 			{
 				"processing" : true,
 				"ajax" : {
-					"url" : p+ "/main/manager/school/data",
+					"url" : p+ "/main/business/school/data",
 					data : function(d) {
 						d["params[name]"] = $("#searchName").val();
 					}
@@ -130,11 +131,14 @@
 				"columns" : [
 						{"data" : "name"},
 						{"data" : "headmaster"},
-						{"data" : "synopsis"},
+// 						{"data" : "synopsis"},
 						{"data" : "address"},
 						{"data" : "entrytime",render : function(d) {
 								return d.split(".")[0];
-						}} 
+						}},
+						{"data" : "id",render : function(){
+							return "";
+						}}
 						]
 			});
 		}

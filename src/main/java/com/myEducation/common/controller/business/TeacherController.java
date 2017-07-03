@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myEducation.inside.model.Teacher;
-import com.myEducation.inside.service.TeacherService;
+import com.myEducation.inside.model.business.Teacher;
+import com.myEducation.inside.service.business.TeacherService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
 import com.myEducation.inside.utils.page.Page;
 
 @Controller
-@RequestMapping("${mainPath}/manager/teacher")
+@RequestMapping("${mainPath}/business/teacher")
 public class TeacherController {
 
 	@Autowired
@@ -26,7 +26,7 @@ public class TeacherController {
 	
 	@RequestMapping
 	public String index(){
-		return "main/manager/teacher-list";
+		return "main/business/teacher-list";
 	}
 	
 	@RequestMapping("/data")
@@ -37,13 +37,13 @@ public class TeacherController {
 	
 	@RequestMapping("edit")
 	public String add(){
-		return "main/manager/teacher-edit";
+		return "main/business/teacher-edit";
 	}
 	
 	@RequestMapping(value="edit/{tId}",method=RequestMethod.GET)
 	public String edit(@PathVariable("tId")Long id,Model model){
 		model.addAttribute("teacher", this.teacherService.getById(id));
-		return "main/manager/teacher-edit";
+		return "main/business/teacher-edit";
 	}
 	
 	@RequestMapping(value="edit",method=RequestMethod.POST)
@@ -80,7 +80,7 @@ public class TeacherController {
 	@RequestMapping(value="delete",method=RequestMethod.POST)
 	public String delete(Teacher teacher){
 		this.teacherService.delete(teacher.getId());
-		return "main/manager/teacher-list";
+		return "main/business/teacher-list";
 	}
 	
 	@RequestMapping("autoTeacher")

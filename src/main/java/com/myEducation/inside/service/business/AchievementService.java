@@ -1,12 +1,12 @@
-package com.myEducation.inside.service;
+package com.myEducation.inside.service.business;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myEducation.inside.dao.AchievementDao;
-import com.myEducation.inside.model.Achievement;
+import com.myEducation.inside.dao.business.AchievementDao;
+import com.myEducation.inside.model.business.Achievement;
 import com.myEducation.inside.utils.page.Page;
 
 @Service

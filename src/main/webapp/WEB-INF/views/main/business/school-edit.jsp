@@ -52,7 +52,7 @@
                         </li>
                         <li>
                             <i class="fa fa-table"></i> <a
-                                href="${pageContext.request.contextPath}/main/manager/school">学校管理</a>
+                                href="${pageContext.request.contextPath}/main/business/school">学校管理</a>
                         </li>
                         <li class="active">
                             <i class="fa fa-table"></i> 添加/编辑学校资料
@@ -66,7 +66,7 @@
                     <div class="page-header">
                         <h3>学校基本信息</h3>
                     </div>
-                    <form id="schoolForm" action="${pageContext.request.contextPath}/main/manager/school/edit"
+                    <form id="schoolForm" action="${pageContext.request.contextPath}/main/business/school/edit"
                           method="post" user="form">
                         <input id="sId" name="id" hidden="hidden" value="${school.id}">
                        	<div class="row form-group">
@@ -150,7 +150,7 @@
                         position: 'mid-center',
                         loaderBg: '#00C1DE',
                         afterHidden: function () {
-                            window.location.href = '${pageContext.request.contextPath}/main/manager/school';
+                            window.location.href = '${pageContext.request.contextPath}/main/business/school';
                         }
                     });
                 } else {

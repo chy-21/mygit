@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myEducation.inside.model.School;
-import com.myEducation.inside.service.SchoolService;
+import com.myEducation.inside.model.business.School;
+import com.myEducation.inside.service.business.SchoolService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
 import com.myEducation.inside.utils.page.Page;
 
 @Controller
-@RequestMapping("${mainPath}/manager/school")
+@RequestMapping("${mainPath}/business/school")
 public class SchoolController {
 
 	@Autowired
@@ -26,7 +26,7 @@ public class SchoolController {
 	
 	@RequestMapping
 	public String index(){
-		return "main/manager/school-list";
+		return "main/business/school-list";
 	}
 	
 	@RequestMapping("/data")
@@ -37,13 +37,13 @@ public class SchoolController {
 	
 	@RequestMapping("edit")
 	public String add(){
-		return "main/manager/school-edit";
+		return "main/business/school-edit";
 	}
 	
 	@RequestMapping("edit/{sId}")
 	public String edit(@PathVariable("sId")Long id,Model model){
 		model.addAttribute("school", this.schoolService.getById(id));
-		return "main/manager/school-edit";
+		return "main/business/school-edit";
 	}
 	
 	@RequestMapping(value="edit",method=RequestMethod.POST)

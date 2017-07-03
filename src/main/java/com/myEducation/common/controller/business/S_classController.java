@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myEducation.inside.service.S_classService;
+import com.myEducation.inside.service.business.S_classService;
 
 @Controller
-@RequestMapping("${mainPath}/manager/s_class")
+@RequestMapping("${mainPath}/business/s_class")
 public class S_classController {
 
 	@Autowired
