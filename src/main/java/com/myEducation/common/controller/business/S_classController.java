@@ -1,4 +1,4 @@
-package com.myEducation.common.controller;
+package com.myEducation.common.controller.business;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,18 +8,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.myEducation.inside.service.S_gradeService;
+import com.myEducation.inside.service.S_classService;
 
 @Controller
-@RequestMapping("${mainPath}/manager/s_grade")
-public class S_gradeController {
+@RequestMapping("${mainPath}/manager/s_class")
+public class S_classController {
 
 	@Autowired
-	private S_gradeService s_gradeService;
+	private S_classService s_classService;
 	
-	@RequestMapping("autoGrade")
+	@RequestMapping("autoClass")
 	@ResponseBody
 	public List<HashMap<String, Object>> getAll(){
-		return s_gradeService.getAll();
+		return s_classService.getAll();
 	}
 }

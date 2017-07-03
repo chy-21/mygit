@@ -1,4 +1,4 @@
-package com.myEducation.common.controller;
+package com.myEducation.common.controller.business;
 
 import java.util.HashMap;
 import java.util.List;
