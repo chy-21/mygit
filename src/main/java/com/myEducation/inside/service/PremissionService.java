@@ -1,5 +1,7 @@
 package com.myEducation.inside.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,9 @@ public class PremissionService {
 	
 	public void delete(Long id){
 		this.premissionDao.delete(id);
+	}
+	
+	public List<String> getByRole(List<Integer> role){
+		return this.premissionDao.getByRoles(role);
 	}
 }

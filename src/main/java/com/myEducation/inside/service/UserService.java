@@ -25,7 +25,7 @@ public class UserService {
 		this.userDao.update(user);
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		this.userDao.delete(id);
 	}
 
@@ -39,7 +39,7 @@ public class UserService {
 		return page;
 	}
 	
-	public User getById(Long id){
+	public User getById(Integer id){
 		return this.userDao.getById(id);
 	}
 	

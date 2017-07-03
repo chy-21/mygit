@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myEducation.inside.model.Premission">
+
+
+	<sql id="table">premission</sql>
+	<sql id="columns">roleid,menuid</sql>
+	
+	<select id="getByRoles" resultType="String">
+		select distinct t2.entitle from premission t1 ,menu t2
+		where t1.menuid = t2.id and t2.status = 0 and t1.roleid in 
+		<foreach collection="list" index="index" item="item" open="(" separator="," close=")"> 
+            #{item} 
+        </foreach>
+		order by t2.id
+	</select>
+	<delete id="deleteByRoleId">
+		delete from <include refid="table"></include>
+		where roleid = #{roleId}
+	</delete>
+<!-- 	<insert id="insertByList"> -->
+<!-- 		insert into <include refid="table"></include>(<include refid="columns"></include>) -->
+<!-- 		values -->
+<!-- 		<foreach collection="array" item="item" index="index" separator="," >   -->
+<!-- 	        (#{roleId},#{item})   -->
+<!-- 	    </foreach>  -->
+<!-- 	</insert> -->
+</mapper>

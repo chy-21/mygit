@@ -2,14 +2,18 @@ package com.myEducation.common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myEducation.inside.model.User;
-import com.myEducation.inside.utils.Constant;
-import com.myEducation.inside.utils.MD5Utils;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
 
@@ -33,22 +37,33 @@ public class LoginController extends BaseController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "login", method = RequestMethod.POST)
+	@RequestMapping(value="login",method=RequestMethod.POST)
 	@ResponseBody
-	public Result<?> userLogin(User user, HttpServletRequest request){
+	public Result<?> login(User user ,HttpServletRequest request,boolean rememberMe){
 		Result<String> result = new Result<String>();
-		User u_id = getUser();
-		if (!user.getUsername().equals(u_id.getUsername())) {
-			result.setStatus(ResultStatus.ACCOUNT_NOTFOUND);
-		}else if (!user.getPassword().toUpperCase().equals(MD5Utils.md5(u_id.getPassword().toUpperCase()))) {
-			result.setStatus(ResultStatus.USER_PASSWORD_ERROR);
-		}
+		UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword(),rememberMe);
+		Subject currentUser = SecurityUtils.getSubject();  
+		
+		try {
+			 currentUser.login(token); 
+		} catch(UnknownAccountException uae){  
+            result.setStatus(ResultStatus.ACCOUNT_NOTFOUND);
+        }catch(IncorrectCredentialsException ice){  
+            result.setStatus(ResultStatus.PASSWORD_ERROR);
+        }catch(AuthenticationException ae){  
+        	ae.printStackTrace();
+            result.setStatus(ResultStatus.FAIL);
+            result.setContent(ae.getMessage());
+        }  
 		return result;
 	}
 	
-	@RequestMapping("logout")
-	public String logout(HttpServletRequest request) {
-		request.getSession().removeAttribute(Constant.LOGIN_USER);
+	@RequestMapping(value="logout",method=RequestMethod.GET)
+	public String logout(HttpServletRequest request){
+		Subject currentUser = SecurityUtils.getSubject();  
+		if(currentUser.getSession() != null){
+			currentUser.logout();
+		}
 		return "login";
 	}
 

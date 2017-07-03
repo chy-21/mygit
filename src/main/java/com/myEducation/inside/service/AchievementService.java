@@ -1,5 +1,7 @@
 package com.myEducation.inside.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,8 +24,8 @@ public class AchievementService {
 		return this.achievementDao.getById(id);
 	}
 	
-	public Achievement getByStuId(Long stu_id){
-		return achievementDao.getById(stu_id);
+	public List<Achievement> getByStuId(Long stu_id){
+		return achievementDao.getByStuId(stu_id);
 	}
 	
 	public void insert(Achievement achievement){

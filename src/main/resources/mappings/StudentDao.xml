@@ -12,6 +12,11 @@
 		where name = #{name}
 	</select>
 	
+	<select id="getById" resultType="Student">
+		select * from <include refid="table"/>
+		where id=#{id}
+	</select>
+	
 	<select id="selectByPage" resultType="Student">
 		select Student.*,s.name as sName,g.name as gName,c.name as cName
 		from <include refid="table"/>

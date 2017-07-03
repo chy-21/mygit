@@ -206,7 +206,7 @@
 							return d.split(".")[0];
 						}},
 						{"data" : "id",render : function(data, type, full, meta){
-							return '<a href="'+ p +'/main/manager/achievement/'+ data +'">查看成绩</a>'
+							return '<a href="'+ p +'/main/manager/student/ach/'+ data +'">查看成绩</a>'
 						}}
 						]
 			});

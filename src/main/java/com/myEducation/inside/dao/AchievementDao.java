@@ -13,6 +13,6 @@ public interface AchievementDao extends BaseDao<Achievement, Long>{
 	// 分页查询显示
 	public List<Achievement> selectByPage(Page<Achievement> page);
 
-	public Achievement getByStuId(@Param("stu_id")Long stu_id);
+	public List<Achievement> getByStuId(@Param("stu_id")Long stu_id);
 	
 }

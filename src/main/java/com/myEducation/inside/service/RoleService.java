@@ -14,6 +14,10 @@ public class RoleService {
 	@Autowired
 	private RoleDao roleDao;
 	
+	public String selectNameByUserId(int userId){
+		return this.roleDao.selectNameByUserId(userId);
+	}
+	
 	public Page<Role> selectByPage(Page<Role> page){
 		page.setData(this.roleDao.selectByPage(page));
 		return page;

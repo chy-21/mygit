@@ -38,7 +38,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("edit/{userId}")
-	public String edit(@PathVariable("userId")Long userId,Model model){
+	public String edit(@PathVariable("userId")Integer userId,Model model){
 		model.addAttribute("user",this.userService.getById(userId));
 		return "main/manager/user-edit";
 	}

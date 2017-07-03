@@ -81,6 +81,6 @@
 	<task:scheduler id="scheduler" pool-size="10" />  
 	<task:annotation-driven executor="executor" scheduler="scheduler" />
 	
-<!-- 	<import resource="spring-redis.xml"/> -->
-<!-- 	<import resource="spring-shiro.xml"/> -->
+	<import resource="spring-redis.xml"/>
+	<import resource="spring-shiro.xml"/>
 </beans>

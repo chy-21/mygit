@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myEducation.inside.model.Student;
+import com.myEducation.inside.service.AchievementService;
 import com.myEducation.inside.service.DictService;
 import com.myEducation.inside.service.StudentService;
 import com.myEducation.inside.utils.Result;
@@ -24,6 +25,9 @@ public class StudentController {
 	
 	@Autowired
 	private DictService dictService;
+	
+	@Autowired
+	private AchievementService achievementService;
 
 	@RequestMapping
 	public String index() {
@@ -85,6 +89,30 @@ public class StudentController {
 	public String delete(Student student){
 		this.studentService.delete(student.getId());
 		return "main/manager/student-list";
+	}
+	
+	@RequestMapping("ach/{id}")
+	public String getByStuId(@PathVariable("id")Long id){
+		return "main/manager/student-ach";
+	}
+	
+	@RequestMapping(value="ach",method=RequestMethod.POST)
+	@ResponseBody
+	public Result<?> achList(Student student){
+		Result<String> result = new Result<String>();
+		try {
+			if (student.getId() == null) {
+				result.setStatus(ResultStatus.DATA_ERROR);
+				return result;
+			}
+			this.achievementService.getByStuId(student.getId());
+			result.setStatus(ResultStatus.SUCCESS);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			result.setStatus(ResultStatus.FAIL);
+			result.setContent(e.getMessage());
+		}
+		return result;
 	}
 	
 	public void initDict(Model model){

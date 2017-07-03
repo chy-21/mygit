@@ -1,44 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.myEducation.inside.dao.RoleDao">
-    
-    <sql id="table">role</sql>
-    <sql id="Columns">
-    	id,name,status,createtime,updatetime
-    </sql>
+<mapper namespace="com.myEducation.inside.model.Role">
+
+	<sql id="table">role</sql>
+	<sql id="columns">id,name,status,createtime,updatetime</sql>
 	
-<!-- 	<select id="selectByName" resultType="Role"> -->
-<!-- 		select * from <include refid="table"/> -->
-<!-- 		where name = #{name} -->
-<!-- 	</select> -->
-	
-	<select id="selectByPage" resultType="Role">
-		select * from <include refid="table"/>
-		<where>
-			id = #{id}
-		</where>
-		order by createtime asc
-	</select>
-	
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Role">
-		insert into <include refid="table"/>(
-			name,status
-		) values (
-			#{name},
-			#{status}
-		)
+	<insert id="insert">
+		insert into <include refid="table"></include>(name,status)
+		values(#{name},#{status})
 	</insert>
-	
 	<update id="update">
-		update <include refid="table"/> 
-		set 
-			name=#{name},
-			status=#{status}
+		update <include refid="table"></include> 
+		set name = #{name},status=#{status}
 		where id = #{id}
 	</update>
+	<select id="selectById" resultType="Role">
+		select <include refid="columns"></include> from <include refid="table"></include>
+		where id = #{id}
+	</select>
 	
-	<delete id="delete">
-		delete from <include refid="table"/>
-		where id=#{id}
-	</delete>
+	<select id="selectNameByUserId" resultType="String">
+		select group_concat(role.name) from userrole
+		join role on role.id = userrole.roleid
+		where userid = #{userId}
+	</select>
 </mapper>

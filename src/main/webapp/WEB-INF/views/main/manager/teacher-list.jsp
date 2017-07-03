@@ -80,7 +80,6 @@
 				            <th>班级</th>
 				            <th>入校时间</th>
 				            <th>修改时间</th>
-				            <th>操作</th>
 				        </tr>
 				        </thead>
 				    </table>
@@ -205,11 +204,7 @@
 						}},
 						{"data" : "updatetime",render : function(d) {
 								return d.split(".")[0];
-						}},
-						{
-		                    "data": "id", render: function (data, type, full, meta) {
-		                        return '<a href="' + p + '/main/manager/teacher/teacher-edit/' + data + '" class="btn btn-primary btn-sm">编辑</a>  <a href="' + p + '/main/manager/teacher/teacher-delete/' + data + '" class="btn btn-primary btn-sm">删除</a>'
-		                }}
+						}}
 						]
 			});
 		}
