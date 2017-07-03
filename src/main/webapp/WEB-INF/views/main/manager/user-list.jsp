@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -51,20 +52,20 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-6">
-<!-- 						<shiro:hasPermission name="user-add"> -->
-							<a href="${pageContext.request.contextPath}/main/manager/user/edit" class="btn btn-primary">添加用户</a>
-<!-- 						</shiro:hasPermission> -->
-<!-- 						<shiro:hasPermission name="user-edit"> -->
+<%-- 						<shiro:hasPermission name="add"> --%>
+							<a href="${pageContext.request.contextPath}/main/manager/user/add" class="btn btn-primary">添加用户</a>
+<%-- 						</shiro:hasPermission> --%>
+						<shiro:hasPermission name="edit">
 							<button type="button" id="edit" class="btn btn-info hidden">编辑用户</button>
-<!-- 						</shiro:hasPermission> -->
-<!-- 						<shiro:hasPermission name="user-delete"> -->
+						</shiro:hasPermission>
+						<shiro:hasPermission name="delete">
 							<button type="button" id="delete" class="btn btn-danger hidden">删除用户</button>
-<!-- 						</shiro:hasPermission> -->
-<!-- 						<shiro:hasPermission name="user-status"> -->
+						</shiro:hasPermission>
+						<shiro:hasPermission name="status">
 							<button type="button" id="status" class="btn btn-default hidden">禁用用户</button>
-<!-- 						</shiro:hasPermission> -->
-<!-- 						<shiro:hasPermission name="user-updatePwd"> -->
-<!-- 							<button type="button" id="user-updatePwd" class="btn btn-warning hidden">密码重置</button> -->
+						</shiro:hasPermission>
+<!-- 						<shiro:hasPermission name="updatePwd"> -->
+<!-- 							<button type="button" id="updatePwd" class="btn btn-warning hidden">密码重置</button> -->
 <!-- 						</shiro:hasPermission> -->
 					</div>
 					<div class="col-lg-6 form-inline text-right">

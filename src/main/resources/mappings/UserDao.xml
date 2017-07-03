@@ -4,10 +4,10 @@
     
     <sql id="table">user</sql>
     <sql id="Columns">
-    	id,username,password,status,entrytime,updatetime
+    	id,username,password,status,isAdmin,entrytime,updatetime
     </sql>
 	
-	<select id="selectByName" resultType="User">
+	<select id="getByName" resultType="User">
 		select * from <include refid="table"/>
 		where username = #{username}
 	</select>
@@ -29,11 +29,12 @@
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="User">
 		insert into <include refid="table"/>(
-			username,password,status
+			username,password,status,isAdmin
 		) values (
 			#{username},
 			#{password},
-			#{status}
+			#{status},
+			#{isAdmin}
 		)
 	</insert>
 	
@@ -42,7 +43,8 @@
 		set 
 			username=#{username},
 			password=#{password},
-			status=#{status}
+			status=#{status},
+			isAdmin=#{isAdmin}
 		where id = #{id}
 	</update>
 	

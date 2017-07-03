@@ -58,9 +58,9 @@ public class MyAuthorizingRealm extends AuthorizingRealm {
 		User user = (User)subject.getSession().getAttribute(Constant.LOGIN_USER);
 		if("admin".equals(user.getUsername())){
 			info.addStringPermission("*");
+			info.addRole("*");
 			return info;
 		}
-		
 		List<Integer> roles = this.userRoleService.selectByUserId(user.getId());
 		if(roles != null && roles.size() > 0){
 			List<String> premissions = this.premissionService.getByRole(roles);
@@ -69,8 +69,6 @@ public class MyAuthorizingRealm extends AuthorizingRealm {
 				info.addRole(roles.get(i)+"");
 			}
 		}
-		
-		
 		return info;
 	}
 

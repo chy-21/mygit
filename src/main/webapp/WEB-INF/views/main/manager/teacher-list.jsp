@@ -55,7 +55,7 @@
 <%-- 						<shiro:hasPermission name="edit"> --%>
                         	<button type="button" id="edit" class="btn btn-info hidden">编辑老师</button>
 <%-- 	                    </shiro:hasPermission> --%>
-<%-- 	                    <shiro:hasPermission name="user-delete"> --%>
+<%-- 	                    <shiro:hasPermission name="delete"> --%>
 	                        <button type="button" id="delete" class="btn btn-danger hidden">删除老师</button>
 					</div>
 					<div class="col-lg-6 form-inline text-right">

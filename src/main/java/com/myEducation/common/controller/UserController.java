@@ -32,7 +32,7 @@ public class UserController {
 		return userService.selectByPage(page);
 	}
 	
-	@RequestMapping("edit")
+	@RequestMapping("add")
 	public String add(){
 		return "main/manager/user-edit";
 	}

@@ -23,6 +23,8 @@ public class User implements Serializable {
 	// 用户状态：0为启用，1为禁用
 	private int status;
 
+	private int isAdmin;
+
 	private String entrytime;
 
 	private String updatetime;
@@ -75,10 +77,12 @@ public class User implements Serializable {
 		this.updatetime = updatetime;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", status=" + status
-				+ ", entrytime=" + entrytime + ", updatetime=" + updatetime + "]";
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 }

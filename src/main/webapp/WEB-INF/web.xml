@@ -5,6 +5,10 @@
 	version="3.1">
 	<display-name>myEducation</display-name>
 	<context-param>
+  	<param-name>webAppRootKey</param-name>
+  	<param-value>myEducation</param-value>
+  </context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring-context.xml</param-value>
 	</context-param>
@@ -57,6 +61,6 @@
 	</servlet-mapping>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/WEB-INF/views/error/404.jsp</location>
+		<location>/error/404.jsp</location>
 	</error-page>
 </web-app>

@@ -13,7 +13,7 @@ public interface UserDao extends BaseDao<User, Integer>{
 	// 分页查询显示
 	public List<User> selectByPage(Page<User> page);
 
-	public User getbyName(@Param("username") String username);
+	public User getByName(@Param("username") String username);
 	
 	public void updatePwd(User user); 
 	

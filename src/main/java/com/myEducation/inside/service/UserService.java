@@ -44,7 +44,7 @@ public class UserService {
 	}
 	
 	public User getByName(String username){
-		return this.userDao.getbyName(username);
+		return this.userDao.getByName(username);
 	}
 	
 }

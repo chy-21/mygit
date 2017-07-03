@@ -28,7 +28,7 @@
         <!-- Shiro的核心安全接口,这个属性是必须的 -->  
         <property name="securityManager" ref="securityManager"/> 
         <property name="loginUrl" value="/login" /> 
-<!--         <property name="unauthorizedUrl" value="/error/401"/> -->
+        <property name="unauthorizedUrl" value="/error/401"/>
         <!-- Shiro连接约束配置,即过滤链的定义 -->  
         <!-- 此处可配合我的这篇文章来理解各个过滤连的作用http://blog.csdn.net/jadyer/article/details/12172839 -->  
         <!-- 下面value值的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的 -->  
@@ -37,17 +37,16 @@
             <value>  
             	/static/**=anon
                 /login=anon
-                /photo=anon
                 /error/*=anon
-                /dashboard/business/** = authc 
+                /main/manager/** = authc 
             </value>  
         </property>  
     </bean>  
-<!--     <bean id="redisSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager"> -->
-<!-- 	    <property name="sessionDAO" ref="redisSessionDAO" /> -->
-<!-- 	    <property name="sessionIdCookieEnabled" value="true"/> -->
-<!--         <property name="sessionIdCookie" ref="sessionIdCookie"/> -->
-<!-- 	</bean> -->
+    <bean id="redisSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+	    <property name="sessionDAO" ref="redisSessionDAO" />
+	    <property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+	</bean>
 	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
 		<property name="name" value="myEducation.cookie.session.id" />
 		<property name="httpOnly" value="true"/>
