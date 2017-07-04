@@ -72,8 +72,8 @@ public class StudentController {
 				s_id.setProvince(student.getProvince());
 				s_id.setNation(student.getNation());
 				s_id.setS_id(student.getS_id());;
-				s_id.setG_id(student.getG_id());
-				s_id.setC_id(student.getC_id());
+				s_id.setS_grade(student.getS_grade());
+				s_id.setS_class(student.getS_class());
 				this.studentService.update(s_id);
 				result.setStatus(ResultStatus.SUCCESS);
 			}
@@ -118,5 +118,7 @@ public class StudentController {
 	public void initDict(Model model){
 		model.addAttribute("province",this.dictService.selectByType("province"));
 		model.addAttribute("nation",this.dictService.selectByType("nation"));
+		model.addAttribute("s_grade", this.dictService.selectByType("s_grade"));
+		model.addAttribute("s_class", this.dictService.selectByType("s_class"));
 	}
 }

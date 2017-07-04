@@ -4,7 +4,7 @@
     
     <sql id="table">teacher</sql>
     <sql id="Columns">
-    	id,name,sex,age,synopsis,s_id,g_id,c_id,entrytime,updatetime
+    	id,name,sex,age,synopsis,s_id,s_grade,s_class,entrytime,updatetime
     </sql>
 	
 	<select id="selectByName" resultType="Teacher">
@@ -13,11 +13,9 @@
 	</select>
 	
 	<select id="selectByPage" resultType="Teacher">
-		select Teacher.*,s.name as sName,g.name as gName,c.name as cName
+		select Teacher.*,s.name as sName
 		from <include refid="table"/>
-		left join school s on teacher.s_id = s.id
-		left join s_grade g on teacher.g_id = g.id
-		left join s_class c on teacher.c_id = c.id
+		join school s on teacher.s_id = s.id
 		<where>
 			<if test="params.name != null and params.name != ''">
 				teacher.name like CONCAT(CONCAT('%', #{params.name}), '%')
@@ -28,9 +26,9 @@
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Teacher">
 		insert into <include refid="table"/>(
-			name,sex,age,synopsis,s_id,g_id,c_id
+			name,sex,age,synopsis,s_id,s_grade,s_class
 		) values (
-			#{name},#{sex},#{age},#{synopsis},#{s_id},#{g_id},#{c_id}
+			#{name},#{sex},#{age},#{synopsis},#{s_id},#{s_grade},#{s_class}
 		)
 	</insert>
 	
@@ -42,8 +40,8 @@
 			age=#{age},
 			synopsis=#{synopsis},
 			s_id=#{s_id},
-			g_id=#{g_id},
-			c_id=#{c_id}
+			s_grade=#{s_grade},
+			s_class=#{s_class}
 		where id = #{id}
 	</update>
 	

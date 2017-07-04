@@ -124,22 +124,24 @@
                         	</div>
                         </div>
                         <div class="row form-group">
-                        	<div class="col-lg-2">
-                        		<label>所在年级<span class="required"> * </span></label>
-                        	</div>
-                        	<div class="col-lg-4">
-                        		<input type="hidden" name="g_id" id="g_id" value="${student.g_id }" />
-                        		<input class="form-control" required="true" id="gName" name="gName" value="${student.gName}"/>
-                        	</div>
+                            <div class="col-lg-2"><label>年级</label></div>
+                            <div class="col-lg-4">
+                                <select class="form-control" name=s_grade>
+                                    <c:forEach items="${s_grade}" var="g">
+                                        <option value="${g.value}" ${g.value == student.s_grade ? 'selected':''}>${g.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                         </div>
                         <div class="row form-group">
-                        	<div class="col-lg-2">
-                        		<label>所在班级<span class="required"> * </span></label>
-                        	</div>
-                        	<div class="col-lg-4">
-                        		<input type="hidden" name="c_id" id="c_id" value="${student.c_id }" />
-                        		<input class="form-control" required="true" id="cName" name="cName" value="${student.cName}"/>
-                        	</div>
+                            <div class="col-lg-2"><label>班级</label></div>
+                            <div class="col-lg-4">
+                                <select class="form-control" name="s_class">
+                                    <c:forEach items="${s_class}" var="c">
+                                        <option value="${c.value}" ${c.value == student.s_class ? 'selected':''}>${c.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-primary">提交</button>

@@ -4,7 +4,7 @@
     
     <sql id="table">student</sql>
     <sql id="Columns">
-    	id,name,sex,age,province,nation,s_id,g_id,c_id,entrytime,updatetime
+    	id,name,sex,age,province,nation,s_id,s_grade,s_class,entrytime,updatetime
     </sql>
 	
 	<select id="selectByName" resultType="Student">
@@ -18,11 +18,9 @@
 	</select>
 	
 	<select id="selectByPage" resultType="Student">
-		select Student.*,s.name as sName,g.name as gName,c.name as cName
+		select Student.*,s.name as sName
 		from <include refid="table"/>
-		left join school s on student.s_id = s.id
-		left join S_grade g on student.g_id = g.id
-		left join S_class c on student.c_id = c.id
+		join school s on student.s_id = s.id
 		<where>
 			<if test="params.name != null and params.name != ''">
 				student.name like CONCAT(CONCAT('%', #{params.name}), '%')
@@ -33,9 +31,9 @@
 	
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
 		insert into <include refid="table"/>(
-			name,sex,age,province,nation,s_id,g_id,c_id
+			name,sex,age,province,nation,s_id,s_grade,s_class
 		) values (
-			#{name},#{sex},#{age},#{province},#{nation},#{s_id},#{g_id},#{c_id}
+			#{name},#{sex},#{age},#{province},#{nation},#{s_id},#{s_grade},#{s_class}
 		)
 	</insert>
 	
@@ -48,8 +46,8 @@
 			province=#{province},
 			nation=#{nation},
 			s_id=#{s_id},
-			g_id=#{g_id},
-			c_id=#{c_id}
+			s_grade=#{s_grade},
+			s_class=#{s_class}
 		where id = #{id}
 	</update>
 	

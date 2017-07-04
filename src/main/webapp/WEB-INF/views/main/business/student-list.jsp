@@ -189,7 +189,7 @@
 						d["params[name]"] = $("#searchName").val();
 					}
 				},
-				"order" : [ [ 6, "desc" ] ],
+				"order" : [ [ 8, "desc" ] ],
 				"columns" : [
 						{"data" : "name"},
 						{"data" : "sex"},
@@ -197,8 +197,8 @@
 						{"data" : "province"},
 						{"data" : "nation"},
 						{"data" : "sName"},
-						{"data" : "gName"},
-						{"data" : "cName"},
+						{"data" : "s_grade"},
+						{"data" : "s_class"},
 						{"data" : "entrytime",render : function(d) {
 							return d.split(".")[0];
 						}},

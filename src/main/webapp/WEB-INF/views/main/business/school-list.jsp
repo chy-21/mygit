@@ -80,6 +80,26 @@
 		</div>
 	</div>
 	
+	<!--start:模态框内容(添加/编辑)-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">学校简介</h4>
+      </div>
+      <div class="modal-body">
+		这里是正文内容
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!--end:模态框内容(添加/编辑)-->
+	
 	<!-- jQuery -->
 	<script src="${pageContext.request.contextPath}/static/global/js/jquery.js"></script>
 	<!-- Bootstrap Core JavaScript -->
@@ -137,7 +157,7 @@
 								return d.split(".")[0];
 						}},
 						{"data" : "id",render : function(){
-							return "";
+							return  '<button type="button" class="" data-toggle="modal" data-target="#myModal">查看简介</button>';
 						}}
 						]
 			});

@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="getSynById" resultType="String">
-		select synopsis from <include refid="table"/>
+		select name,synopsis from <include refid="table"/>
 		where id = #{id}
 	</select>
 	

@@ -64,8 +64,8 @@ public class TeacherController {
 				t_id.setAge(teacher.getAge());
 				t_id.setSynopsis(teacher.getSynopsis());
 				t_id.setS_id(teacher.getS_id());
-				t_id.setG_id(teacher.getG_id());
-				t_id.setC_id(teacher.getC_id());
+				t_id.setS_grade(teacher.getS_grade());
+				t_id.setS_class(teacher.getS_class());
 				this.teacherService.update(t_id);
 			}
 			result.setStatus(ResultStatus.SUCCESS);
