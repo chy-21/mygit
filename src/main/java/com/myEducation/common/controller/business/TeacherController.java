@@ -1,8 +1,5 @@
 package com.myEducation.common.controller.business;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,8 +61,8 @@ public class TeacherController {
 				t_id.setAge(teacher.getAge());
 				t_id.setSynopsis(teacher.getSynopsis());
 				t_id.setS_id(teacher.getS_id());
-				t_id.setS_grade(teacher.getS_grade());
-				t_id.setS_class(teacher.getS_class());
+				t_id.setG_id(teacher.getG_id());
+				t_id.setC_id(teacher.getC_id());
 				this.teacherService.update(t_id);
 			}
 			result.setStatus(ResultStatus.SUCCESS);
@@ -83,9 +80,9 @@ public class TeacherController {
 		return "main/business/teacher-list";
 	}
 	
-	@RequestMapping("autoTeacher")
-	@ResponseBody
-	public List<HashMap<String, Object>> getTeacherAll(){
-		return teacherService.getAll();
-	}
+//	@RequestMapping("autoTeacher")
+//	@ResponseBody
+//	public List<HashMap<String, Object>> getTeacherAll(){
+//		return teacherService.getAll();
+//	}
 }

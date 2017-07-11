@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myEducation.inside.dao.business.SchoolS_gradeDao">
+
+	<sql id="table">schools_grade</sql>
+	<sql id="Columns">
+		id,s_id,g_id,createtime
+	</sql>
+
+	<select id="getByS_id" resultType="HashMap">
+		select sg.*,s.name as sName,g.name as gName
+		from
+		schools_grade sg
+		left join school s on sg.s_id=s.id
+		left join s_grade g
+		on sg.g_id=g.id
+		where sg.s_id=1
+	</select>
+
+	<delete id="deleteByS_id">
+		delete from
+		<include refid="table" />
+		where s_id = #{s_id}
+	</delete>
+
+	<insert id="insert">
+		insert into
+		<include refid="table" />
+		(s_id,g_id)
+		values (#{s_id},#{g_id})
+	</insert>
+
+	<update id="update">
+		update
+		<include refid="table" />
+		set s_id = #{s_id},g_id = #{g_id},createtime = now()
+		where id=#{id}
+	</update>
+</mapper>

@@ -197,8 +197,8 @@
 						{"data" : "age"},
 						{"data" : "synopsis"},
 						{"data" : "sName"},
-						{"data" : "s_grade"},
-						{"data" : "s_class"},
+						{"data" : "gName"},
+						{"data" : "cName"},
 						{"data" : "entrytime",render : function(d) {
 								return d.split(".")[0];
 						}},

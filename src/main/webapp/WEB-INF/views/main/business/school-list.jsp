@@ -68,7 +68,6 @@
 				        <tr>
 				            <th>学校名称</th>
 				            <th>学校负责人</th>
-<!-- 				            <th>学校简介</th> -->
 				            <th>学校地址</th>
 				            <th>建校时间</th>
 				            <th>操作</th>
@@ -81,16 +80,28 @@
 	</div>
 	
 	<!--start:模态框内容(添加/编辑)-->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade getSyn" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">学校简介</h4>
       </div>
-      <div class="modal-body">
-		这里是正文内容
-      </div>
+      	<div class="modal-body">
+      		 <form id="certificateForm"
+                      action="${pageContext.request.contextPath}/main/business/school/getSyn"
+                      method="post" role="form" ENCTYPE="multipart/form-data">
+	      		<input name="schoolId" hidden="hidden" value="${school.id}">
+				<div class="row form-group">
+		            <div class="col-lg-2"><label>学校：</label></div>
+		            <div class="col-lg-4">${school.name}</div>
+		        </div>
+		        <div class="row form-group">
+		        	<div class="col-lg-2"><label>简介：</label></div>
+		        	<div class="col-lg-4">${school.synopsis}</div>
+		        </div>
+		     </form>
+		</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 <!--         <button type="button" class="btn btn-primary">Save changes</button> -->
@@ -151,13 +162,12 @@
 				"columns" : [
 						{"data" : "name"},
 						{"data" : "headmaster"},
-// 						{"data" : "synopsis"},
 						{"data" : "address"},
 						{"data" : "entrytime",render : function(d) {
 								return d.split(".")[0];
 						}},
 						{"data" : "id",render : function(){
-							return  '<button type="button" class="" data-toggle="modal" data-target="#myModal">查看简介</button>';
+							return  '<button type="button" class="" data-toggle="modal" data-target=".getSyn">查看简介</button>';
 						}}
 						]
 			});

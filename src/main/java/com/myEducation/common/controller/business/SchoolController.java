@@ -74,6 +74,13 @@ public class SchoolController {
 		return result;
 	}
 	
+	@RequestMapping("getSyn")
+	@ResponseBody
+	public String getSynById(@PathVariable("id")Long id,Model model){
+		model.addAttribute("school", this.schoolService.getSynById(id));
+		return "main/business/school-list";
+	}
+	
 	@RequestMapping("autoSchool")
 	@ResponseBody
 	public List<HashMap<String, Object>> getSchoolAll(){

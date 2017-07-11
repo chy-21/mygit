@@ -48,4 +48,5 @@ public class SchoolService {
 	public School getSynById(Long id){
 		return this.schoolDao.getSynById(id);
 	}
+	
 }

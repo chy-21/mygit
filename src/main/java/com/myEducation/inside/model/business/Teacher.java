@@ -24,9 +24,9 @@ public class Teacher implements Serializable {
 
 	private Long s_id;
 
-	private String s_grade;
+	private int g_id;
 
-	private String s_class;
+	private int c_id;
 
 	private String synopsis;
 
@@ -80,20 +80,20 @@ public class Teacher implements Serializable {
 		this.s_id = s_id;
 	}
 
-	public String getS_grade() {
-		return s_grade;
+	public int getG_id() {
+		return g_id;
 	}
 
-	public void setS_grade(String s_grade) {
-		this.s_grade = s_grade;
+	public void setG_id(int g_id) {
+		this.g_id = g_id;
 	}
 
-	public String getS_class() {
-		return s_class;
+	public int getC_id() {
+		return c_id;
 	}
 
-	public void setS_class(String s_class) {
-		this.s_class = s_class;
+	public void setC_id(int c_id) {
+		this.c_id = c_id;
 	}
 
 	public String getSynopsis() {

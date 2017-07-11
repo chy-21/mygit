@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myEducation.inside.dao.business.S_gradeS_classDao">
+
+	<sql id="table">s_grades_class</sql>
+	<sql id="Columns">
+		id,g_id,c_id,createtime
+	</sql>
+
+	<select id="getByG_id">
+		select gc.*,g.name as gName,c.name as cName
+		from
+		s_grades_class gc
+		left join s_grade g on gc.g_id=g.id
+		left join s_class
+		c on gc.c_id=c.id
+		where gc.g_id = #{g_id}
+	</select>
+
+	<delete id="deleteByG_id">
+		dalete from
+		<include refid="table" />
+		where g_id=#{g_id}
+	</delete>
+
+	<insert id="table">
+		insert into
+		<include refid="table" />
+		(g_id,c_id)
+		values(#{g_id},#{c_id})
+	</insert>
+
+	<update id="update">
+		update
+		<include refid="table" />
+		set g_id=#{g_id},c_id=#{c_id},createtime=now()
+		where id=#{id}
+	</update>
+
+</mapper>

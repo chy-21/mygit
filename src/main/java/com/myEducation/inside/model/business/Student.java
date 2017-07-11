@@ -22,12 +22,14 @@ public class Student implements Serializable {
 	private String province;
 	private String nation;
 	private int s_id;
-	private String s_grade;
-	private String s_class;
+	private int g_id;
+	private int c_id;
 	private String entrytime;
 	private String updatetime;
 
 	private String sName;
+	private String gName;
+	private String cName;
 
 	public Long getId() {
 		return id;
@@ -77,20 +79,36 @@ public class Student implements Serializable {
 		this.nation = nation;
 	}
 
-	public String getS_grade() {
-		return s_grade;
+	public int getG_id() {
+		return g_id;
 	}
 
-	public void setS_grade(String s_grade) {
-		this.s_grade = s_grade;
+	public void setG_id(int g_id) {
+		this.g_id = g_id;
 	}
 
-	public String getS_class() {
-		return s_class;
+	public int getC_id() {
+		return c_id;
 	}
 
-	public void setS_class(String s_class) {
-		this.s_class = s_class;
+	public void setC_id(int c_id) {
+		this.c_id = c_id;
+	}
+
+	public String getgName() {
+		return gName;
+	}
+
+	public void setgName(String gName) {
+		this.gName = gName;
+	}
+
+	public String getcName() {
+		return cName;
+	}
+
+	public void setcName(String cName) {
+		this.cName = cName;
 	}
 
 	public String getEntrytime() {
