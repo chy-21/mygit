@@ -20,7 +20,7 @@
 	<select id="selectUserListByRoleId" resultType="HashMap">
 		select id as value,name as label from user where id not in (select userid from userrole where roleid = #{roleId})
 	</select>
-	<insert id="insert">
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="UserRole">
 		insert into <include refid="table"></include>(roleid,userid)
 		values(#{roleId},#{userId})
 	</insert>

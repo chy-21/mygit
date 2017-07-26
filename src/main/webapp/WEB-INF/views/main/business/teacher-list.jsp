@@ -58,14 +58,27 @@
 <%-- 	                    <shiro:hasPermission name="delete"> --%>
 	                        <button type="button" id="delete" class="btn btn-danger hidden">删除老师</button>
 					</div>
-					<div class="col-lg-6 form-inline text-right">
-						<div class="form-group">
-							<label for="searchName">名称:</label> <input class="form-control"
-								id="searchName" type="text" />
-						</div>
-						<button id="searchBtn" class="btn btn-purple">搜索</button>
-					</div>
 				</div>
+				<div class="row">
+		                <div class="col-lg-12">
+		                    <div class="row">
+		                        <div class="col-md-11">
+		                            <form class="form-inline form-box">
+		                                <div class="form-group">
+		                                    <label>录入时间：</label>
+		                                    <input id="startTime" size="16" type="text" class="form-control form_datetime">
+		                                    ~ <input id="endTime" size="16" type="text" class="form-control form_datetime">
+		                                </div>
+		                                <div class="form-group">
+											<label for="searchName">名称:</label> <input class="form-control"
+												id="searchName" type="text" />
+										</div>
+		                                <button id="searchBtn" type="submit" class="btn btn-success">查询</button>
+		                            </form>
+		                        </div>
+		                    </div>
+		                </div>
+					</div>
 				<div class="col-lg-12">
 				    <table id="data-table" class="table table-striped table-bordered table-responsive table-hover"
 				           width="100%">
@@ -103,8 +116,31 @@
 		var p = '${pageContext.request.contextPath}';
 		var datatables;
 		$(function() {
+			$('#startTime').val(getFormatDate(7));
+	        $('#endTime').val(getNowFormatDate());
 			initTable();
-			
+			$("#startTime").datetimepicker({
+	            // datepicker:true,
+	            validateOnBlur: false,
+	            format: 'Y-m-d H:i',
+	            formatDate: 'Y-m-d H:i',
+	            onShow: function (currentDateTime) {
+	                this.setOptions({
+	                    maxDate: $("#endTime").val() ? $("#endTime").val() : false
+	                });
+	            }
+	        });
+	        $("#endTime").datetimepicker({
+	            // datepicker:true,
+	            validateOnBlur: false,
+	            format: 'Y-m-d H:i',
+	            formatDate: 'Y-m-d H:i',
+	            onShow: function (currentDateTime) {
+	                this.setOptions({
+	                    minDate: $("#startTime").val() ? $("#startTime").val() : false
+	                });
+	            }
+	        });
 			$('#data-table tbody').on('click', 'tr', function () {
 	            if ($(this).hasClass('selected')) {
 	            }
@@ -171,7 +207,41 @@
 	            });
 	        })
 	        
-		})
+		});
+		function getFormatDate(n) {
+			n == null ? 0 : n;
+	        var date = new Date();
+	        var seperator1 = "-";
+	        var seperator2 = ":";
+	        var month = date.getMonth() + 1;
+	        var strDate = date.getDate() - n;
+	        if (month >= 1 && month <= 9) {
+	            month = "0" + month;
+	        }
+	        if (strDate >= 0 && strDate <= 9) {
+	            strDate = "0" + strDate;
+	        }
+	        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+	            + " " + "00" + seperator2 + "00";
+	        return currentdate;
+	    }; 
+	    function getNowFormatDate() {
+	        var date = new Date();
+	        var seperator1 = "-";
+	        var seperator2 = ":";
+	        var month = date.getMonth() + 1;
+	        var strDate = date.getDate();
+	        var strHours = date.getHours();
+	        var strMin = date.getMinutes();
+	        if (month >= 1 && month <= 9) {
+	            month = "0" + month;
+	        }
+	        if (strDate >= 0 && strDate <= 9) {
+	            strDate = "0" + strDate;
+	        }
+	        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + strHours + seperator2 + strMin;
+	        return currentdate;
+	    }; 
 
 		function initTable() {
 			datatables = $("#data-table").DataTable(

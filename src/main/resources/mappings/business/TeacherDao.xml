@@ -24,8 +24,11 @@
 		left join s_grade g on teacher.g_id = g.id
 		left join s_class c on teacher.c_id = c.id
 		<where>
+			<if test="params.startTime != null and params.startTime != ''">
+				<![CDATA[ entrytime > #{params.startTime} AND entrytime <= #{params.endTime} ]]>
+			</if>
 			<if test="params.name != null and params.name != ''">
-				teacher.name like CONCAT(CONCAT('%', #{params.name}), '%')
+				and teacher.name like CONCAT(CONCAT('%', #{params.name}), '%')
 			</if>
 		</where>
 		order by updatetime desc

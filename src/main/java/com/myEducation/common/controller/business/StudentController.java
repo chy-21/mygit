@@ -16,6 +16,7 @@ import com.myEducation.inside.service.DictService;
 import com.myEducation.inside.service.business.AchievementService;
 import com.myEducation.inside.service.business.S_classService;
 import com.myEducation.inside.service.business.S_gradeService;
+import com.myEducation.inside.service.business.SchoolService;
 import com.myEducation.inside.service.business.StudentService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
@@ -30,6 +31,9 @@ public class StudentController {
 	
 	@Autowired
 	private DictService dictService;
+	
+	@Autowired
+	private SchoolService schoolService;
 	
 	@Autowired
 	private S_gradeService s_gradeService;
@@ -54,6 +58,7 @@ public class StudentController {
 	@RequestMapping("add")
 	public String add(Model model) {
 		initDict(model);
+		model.addAttribute("school", this.schoolService.getAll());
 		model.addAttribute("s_grade",this.s_gradeService.getAll());
 		model.addAttribute("s_class", this.s_classService.getAll());
 		return "main/business/student-edit";
@@ -63,6 +68,7 @@ public class StudentController {
 	public String edit(@PathVariable("stuId") Long stuId,Model model) {
 		initDict(model);
 		model.addAttribute("student", this.studentService.getById(stuId));
+		model.addAttribute("school", this.schoolService.getAll());
 		model.addAttribute("s_grade",this.s_gradeService.getAll());
 		model.addAttribute("s_class", this.s_classService.getAll());
 		return "main/business/student-edit";

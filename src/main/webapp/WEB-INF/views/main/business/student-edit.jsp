@@ -124,14 +124,18 @@
 								</div>
 							</div>
 							<div class="row form-group">
-								<div class="col-lg-2">
-									<label>所在学校<span class="required"> * </span></label>
-								</div>
-								<div class="col-lg-4">
-									<input type="hidden" name="s_id" id="s_id" onchange="myFunction()" value="${student.s_id }" /> 
-									<input class="form-control" required="true" id="sName" name="sName" value="${student.sName}" />
-								</div>
-							</div>
+	                        	<div class="col-lg-2">
+	                            	<label for="gId">所在学校</label>
+	                            </div>
+	                            <div class="col-md-2">
+	                                <select id="sId" name="sId" class="form-control">
+	                                    <option value="0">--选择学校--</option>
+	                                    <c:forEach items="${school}" var="s">
+	                                        <option value="${s.id}" ${s.id==s_id?'selected':''}>${s.name}</option>
+	                                    </c:forEach>
+	                                </select>
+	                            </div>
+	                        </div>
 	                        <div class="row form-group">
 	                        	<div class="col-lg-2">
 	                            	<label for="gId">所属年级</label>
@@ -204,7 +208,7 @@
 		var autoData;
 		$(document).ready(function() {
 			
-			initAutocomplateSchool();
+// 			initAutocomplateSchool();
 
 			$('#studentForm').ajaxForm(
 				{
@@ -233,96 +237,36 @@
 				});
 			});
 
-		    function initAutocomplateSchool(){
-		    	$.ajax({
-		    		url: "${pageContext.request.contextPath}/main/business/school/autoSchool",
-		    		method:'get',
-		    		dataType:'json',
-		    		success: function(data){
-		    			$( "#sName" ).autocomplete({
-		    			      source: data,
-		    			      delay:10,
-		    			      minLength:0,
-		    			      autoFocus:false,
-		    			      focus: function( event, ui ) {
-		    			        $( "#sName" ).val( ui.item.label );
-		    			        $( "#s_id" ).val( ui.item.value );
-		    			        return false;
-		    			      },
-		    			      select: function( event, ui ) {
-		    			        $( "#sName" ).val( ui.item.label );
-		    			        $( "#s_id" ).val( ui.item.value );
-		    			        return false;
-		    			      }
-		    			    })
-		    			    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-		    			      return $( "<li>" )
-		    			        .append( "<a>" + item.label + "</a>" )
-		    			        .appendTo( ul );
-		    			    };
-		        	}
-				})
-		    };
-// 		$(function() {
-// 			$.post("", function(data) {
-// 				var dataObj = eval("(" + data + ")");
-// 				for (var i = 0; i < dataObj.length; i++) {
-// 					var $option = $("<option></option>");
-// 					$option.attr("value", dataObj[i].id);
-// 					$option.text(dataObj[i].name);
-// 					$("#s_id").append($option);
-// 				}
-// 			});
-
-// 			$("#s_id").change(
-// 					function() {
-// 						var jsonObj = {
-// 							id : $(this).val()
-// 						};
-// 						$("#g_id option[value!='']").remove();
-// 						$("#c_id option[value!='']").remove();
-// 						$.post(""
-// 								+ $("#s_id").val(), jsonObj, function(data,
-// 								textStatus) {
-// 							var dataObj = eval("(" + data + ")");
-// 							for (var i = 0; i < dataObj.length; i++) {
-// 								var $option = $("<option></option>");
-// 								$option.attr("value", dataObj[i].id);
-// 								$option.text(dataObj[i].name);
-// 								$("#g_id").append($option);
-// 							}
-// 						});
-// 					});
-
-// 			$("#g_id").change(
-// 				function() {
-// 					var jsonObj = {
-// 						id : $(this).val()
-// 					};
-// 					$("#c_id option[value!='']").remove();
-// 					$.post(""
-// 							+ $("#g_id").val(), jsonObj, function(data,
-// 							textStatus) {
-// 						var dataObj = eval("(" + data + ")");
-// 						for (var i = 0; i < dataObj.length; i++) {
-// 							var $option = $("<option></option>");
-// 							$option.attr("value", dataObj[i].id);
-// 							$option.text(dataObj[i].name);
-// 							$("#c_id").append($option);
-// 						}
-// 					});
-// 				});
-// 		});
-
-		function myFunction(){
-// 			var x=document.getElementById("s_id");
-// 			console.debug("00000000");
-			//获得用户选中的项的索引
-			var index=window.document.form.s_id.selectedIndex;
-			//根据索引获得该选项的value值
-			var val=window.document.form.s_id.options[index].value;
-			
-		};
+// 		    function initAutocomplateSchool(){
+// 		    	$.ajax({
+// 		    		url: "${pageContext.request.contextPath}/main/business/school/autoSchool",
+// 		    		method:'get',
+// 		    		dataType:'json',
+// 		    		success: function(data){
+// 		    			$( "#sName" ).autocomplete({
+// 		    			      source: data,
+// 		    			      delay:10,
+// 		    			      minLength:0,
+// 		    			      autoFocus:false,
+// 		    			      focus: function( event, ui ) {
+// 		    			        $( "#sName" ).val( ui.item.label );
+// 		    			        $( "#s_id" ).val( ui.item.value );
+// 		    			        return false;
+// 		    			      },
+// 		    			      select: function( event, ui ) {
+// 		    			        $( "#sName" ).val( ui.item.label );
+// 		    			        $( "#s_id" ).val( ui.item.value );
+// 		    			        return false;
+// 		    			      }
+// 		    			    })
+// 		    			    .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+// 		    			      return $( "<li>" )
+// 		    			        .append( "<a>" + item.label + "</a>" )
+// 		    			        .appendTo( ul );
+// 		    			    };
+// 		        	}
+// 				})
+// 		    };
 	</script>
 </body>
 

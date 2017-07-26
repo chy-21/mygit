@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myEducation.inside.model.business.Teacher;
+import com.myEducation.inside.service.business.S_classService;
+import com.myEducation.inside.service.business.S_gradeService;
+import com.myEducation.inside.service.business.SchoolService;
 import com.myEducation.inside.service.business.TeacherService;
 import com.myEducation.inside.utils.Result;
 import com.myEducation.inside.utils.ResultStatus;
@@ -20,6 +23,15 @@ public class TeacherController {
 
 	@Autowired
 	private TeacherService teacherService;
+	
+	@Autowired
+	private SchoolService schoolService;
+	
+	@Autowired
+	private S_gradeService s_gradeService;
+	
+	@Autowired
+	private S_classService s_classService;
 	
 	@RequestMapping
 	public String index(){
@@ -33,13 +45,19 @@ public class TeacherController {
 	}
 	
 	@RequestMapping("edit")
-	public String add(){
+	public String add(Model model){
+		model.addAttribute("school", this.schoolService.getAll());
+		model.addAttribute("s_grade",this.s_gradeService.getAll());
+		model.addAttribute("s_class", this.s_classService.getAll());
 		return "main/business/teacher-edit";
 	}
 	
 	@RequestMapping(value="edit/{tId}",method=RequestMethod.GET)
 	public String edit(@PathVariable("tId")Long id,Model model){
 		model.addAttribute("teacher", this.teacherService.getById(id));
+		model.addAttribute("school", this.schoolService.getAll());
+		model.addAttribute("s_grade",this.s_gradeService.getAll());
+		model.addAttribute("s_class", this.s_classService.getAll());
 		return "main/business/teacher-edit";
 	}
 	
@@ -80,9 +98,4 @@ public class TeacherController {
 		return "main/business/teacher-list";
 	}
 	
-//	@RequestMapping("autoTeacher")
-//	@ResponseBody
-//	public List<HashMap<String, Object>> getTeacherAll(){
-//		return teacherService.getAll();
-//	}
 }
