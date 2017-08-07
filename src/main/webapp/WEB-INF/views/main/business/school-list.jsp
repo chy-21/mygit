@@ -79,36 +79,62 @@
 		</div>
 	</div>
 	
+	<!-- Button trigger modal -->
+<!-- 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"> -->
+<!-- 	  Launch demo modal -->
+<!-- 	</button> -->
+	
+	<!-- Modal -->
+	<div class="modal fade getSyn" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	        <span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        	正文
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
 	<!--start:模态框内容(添加/编辑)-->
-<div class="modal fade getSyn" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">学校简介</h4>
-      </div>
-      	<div class="modal-body">
-      		 <form id="certificateForm"
-                      action="${pageContext.request.contextPath}/main/business/school/getSyn"
-                      method="post" role="form" ENCTYPE="multipart/form-data">
-	      		<input name="schoolId" hidden="hidden" value="${school.id}">
-				<div class="row form-group">
-		            <div class="col-lg-2"><label>学校：</label></div>
-		            <div class="col-lg-4">${school.name}</div>
-		        </div>
-		        <div class="row form-group">
-		        	<div class="col-lg-2"><label>简介：</label></div>
-		        	<div class="col-lg-4">${school.synopsis}</div>
-		        </div>
-		     </form>
-		</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-<!--         <button type="button" class="btn btn-primary">Save changes</button> -->
-      </div>
-    </div>
-  </div>
-</div>
+<!-- <div class="modal fade getSyn" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"> -->
+<!--   <div class="modal-dialog" role="document"> -->
+<!--     <div class="modal-content"> -->
+<!--       <div class="modal-header"> -->
+<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="Modal()"> -->
+<!--         <span aria-hidden="true">&times;</span></button> -->
+<!--         <h4 class="modal-title" id="myModalLabel">学校简介</h4> -->
+<!--       </div> -->
+<!--       	<div class="modal-body"> -->
+<!--       		 <form id="certificateForm" -->
+<%--                       action="${pageContext.request.contextPath}/main/business/school/getSyn/id" --%>
+<!--                       method="post" role="form" ENCTYPE="multipart/form-data"> -->
+<%-- 	      		<input name="schoolId" hidden="hidden" value="${school.id}"> --%>
+<!-- 				<div class="row form-group"> -->
+<!-- 		            <div class="col-lg-2"><label>学校：</label></div> -->
+<%-- 		            <div class="col-lg-4">${school.name}</div> --%>
+<!-- 		        </div> -->
+<!-- 		        <div class="row form-group"> -->
+<!-- 		        	<div class="col-lg-2"><label>简介：</label></div> -->
+<%-- 		        	<div class="col-lg-4">${school.synopsis}</div> --%>
+<!-- 		        </div> -->
+<!-- 		     </form> -->
+<!-- 		</div> -->
+<!--       <div class="modal-footer"> -->
+<!--         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> -->
+<!-- <!--         <button type="button" class="btn btn-primary">Save changes</button> --> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </div> -->
+<!-- </div> -->
 <!--end:模态框内容(添加/编辑)-->
 	
 	<!-- jQuery -->
@@ -167,11 +193,12 @@
 								return d.split(".")[0];
 						}},
 						{"data" : "id",render : function(){
-							return  '<button type="button" class="" data-toggle="modal" data-target=".getSyn">查看简介</button>';
+							return  '<button type="button" class="" data-toggle="modal" data-target=".getSyn" onclick="modal1">查看简介</button>';
 						}}
 						]
 			});
-		}
+		};
+		
 	</script>
 </body>
 </html>
